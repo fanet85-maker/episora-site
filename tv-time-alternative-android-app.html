@@ -93,6 +93,65 @@
                 </div>
             </div>
         </section>
+        <!-- New Guides and Support Section (English Version) -->
+        <style>
+            .guides-section {
+                margin-top: 60px;
+                padding: 20px 0;
+            }
+            .guides-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+                margin-top: 20px;
+            }
+            @media (max-width: 768px) {
+                .guides-grid { grid-template-columns: 1fr; }
+            }
+            .guide-card {
+                background: var(--card-bg);
+                padding: 25px;
+                border-radius: 15px;
+                text-align: left;
+                text-decoration: none;
+                color: white;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                transition: transform 0.2s, border-color 0.2s;
+                border: 1px solid transparent;
+            }
+            .guide-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--accent-color);
+            }
+            .guide-card h3 {
+                margin-top: 0;
+                color: var(--accent-color);
+                font-size: 1.3rem;
+            }
+            .guide-card p {
+                color: var(--text-muted);
+                font-size: 0.95rem;
+                margin-bottom: 0;
+            }
+        </style>
+
+        <section class="guides-section">
+            <h2>Helpful Guides & Support</h2>
+            <div class="guides-grid">
+                <!-- Link to English Guide 1 -->
+                <a href="how-to-import-tv-time-data-android.html" class="guide-card">
+                    <h3>📖 How to Import TV Time Data</h3>
+                    <p>Moving away from TV Time? Learn how to transfer your entire movie and TV show tracking history to Episora-WatchMate in under a minute.</p>
+                </a>
+                
+                <!-- Link to English Guide 2 -->
+                <a href="how-to-backup-android-tv-tracker-google-drive.html" class="guide-card">
+                    <h3>💾 Configure Google Drive Cloud Backup</h3>
+                    <p>Keep your media database safe on your local storage and set up an automated backup copy on your private Google Drive Cloud account.</p>
+                </a>
+            </div>
+        </section>
+
     </div>
 
 </body>
