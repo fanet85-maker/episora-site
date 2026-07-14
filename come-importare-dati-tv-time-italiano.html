@@ -69,6 +69,25 @@
             font-size: 1.25rem;
             color: #fff;
         }
+        /* Stile specifico per i link di testo interni alla guida */
+        .step-block a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .step-block a:hover {
+            color: #fff;
+        }
+        /* Stile responsive per le immagini/screenshot esplicativi */
+        .guide-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto 5px auto;
+            border-radius: 10px;
+            border: 2px solid #2d3748;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
         /* Box promozionale finale per scaricare l'app */
         .promo-box {
             background: linear-gradient(135deg, #1a1d2e 0%, #0b0d14 100%);
@@ -97,6 +116,184 @@
         .cta-btn:hover {
             transform: scale(1.05);
         }
+        /* --- STILE DEL CAROSELLO INSERITO NEL PUNTO 2 --- */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 25px auto 10px auto;
+            background: #0f111a; /* Sfondo scuro che stacca dalla card */
+            border: 1px solid #2d3748;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+        }
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            animation: fadeEffect 0.5s ease-in-out;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        .carousel-slide img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px; /* Altezza ideale per gli screenshot verticali di smartphone */
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            padding-top: 15px;
+        }
+        .carousel-caption {
+            background: rgba(26, 29, 46, 0.95);
+            color: var(--text-color);
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #2d3748;
+            line-height: 1.5;
+        }
+        
+        /* Frecce di navigazione */
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            background: rgba(15, 17, 26, 0.8);
+            color: var(--accent-color);
+            border: 1px solid #2d3748;
+            font-size: 20px;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            user-select: none;
+            z-index: 5;
+        }
+        .carousel-prev:hover, .carousel-next:hover {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+        }
+        .carousel-prev { left: 10px; }
+        .carousel-next { right: 10px; }
+
+        /* Pallini */
+        .carousel-dots {
+            text-align: center;
+            padding: 10px 0;
+            background: #0b0d14;
+        }
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #4a5568;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .dot.active, .dot:hover {
+            background-color: var(--accent-color);
+        }
+
+        @keyframes fadeEffect {
+            from { opacity: 0.5; } 
+            to { opacity: 1; }
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 600px) {
+            .carousel-prev, .carousel-next {
+                padding: 6px 10px;
+                font-size: 16px;
+            }
+            .carousel-caption {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+            }
+        }
+        /* --- STILE BOX CONSIGLIO IMPORTANTE --- */
+        .info-alert-box {
+            display: flex;
+            background: rgba(72, 187, 120, 0.1); /* Sfondo verde trasparente coerente con l'app */
+            border-left: 4px solid #48bb78; /* Bordo verde */
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #cbd5e0;
+        }
+        .info-alert-icon {
+            font-size: 1.3rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .info-alert-content strong {
+            color: #48bb78; /* Testo forte in verde */
+        }
+        /* --- STILE DELLA LISTA DEI PASSAGGI (PUNTO 3) --- */
+        .step-sublist {
+            margin: 20px 0 25px 5px;
+            padding: 0;
+            list-style: none;
+            counter-reset: substep-counter;
+        }
+        .step-sublist li {
+            position: relative;
+            margin-bottom: 12px;
+            padding-left: 35px;
+            line-height: 1.6;
+            color: #cbd5e0;
+            font-size: 0.95rem;
+        }
+        /* Crea il cerchietto verde numerato in automatico */
+        .step-sublist li::before {
+            content: counter(substep-counter);
+            counter-increment: substep-counter;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            background: rgba(72, 187, 120, 0.15);
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 0.8rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #48bb78;
+        }
+        .step-sublist li strong {
+            color: #fff;
+        }
+        /* Se hai immagini singole fuori dai caroselli (es. nel Punto 4 se è uno step singolo) */
+.step-block > img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px; /* Impedisce alle immagini singole di diventare giganti */
+    display: block;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+/* --- ADATTAMENTO PER SCHERMI PICCOLI (MOBILE) --- */
+@media (max-width: 768px) {
+    .carousel-slides img {
+        height: 280px; /* Riduce l'altezza sui telefoni così non occupa tutto lo schermo */
+    }
+    .step-block > img {
+        max-height: 280px;
+    }
+}
     </style>
 </head>
 <body>
@@ -107,40 +304,266 @@
 
         <main class="guide-content">
             <h1>Come trasferire la tua cronologia da TV Time a Episora-WatchMate</h1>
-            <div class="meta-info">Guida ufficiale al Supporto • Tempo di lettura: 2 minuti</div>
+            <div class="meta-info">Guida ufficiale al Supporto • Tempo di lettura: 3 minuti</div>
 
             <p>Sei rimasto orfano di TV Time o cerchi semplicemente un modo più sicuro per tenere traccia delle tue serie TV e dei tuoi film senza dipendere da server cloud esterni? Non devi ricominciare da zero e perdere anni di tracciamento progressi.</p>
             
             <p>Grazie alla funzionalità di migrazione nativa di <strong>Episora-WatchMate</strong>, puoi trasferire l'intero archivio dei tuoi contenuti visti in pochissimi istanti. I tuoi dati verranno salvati in locale sul tuo smartphone Android, protetti e al sicuro da qualsiasi futura chiusura del servizio.</p>
 
-            <h2>I 3 passaggi per completare la migrazione:</h2>
+            <h2>I 4 passaggi per completare la migrazione:</h2>
 
+            <!-- STEP 1 -->
             <div class="step-block">
                 <h3>1. Esporta i dati da TV Time</h3>
-                <p>Apri l'applicazione di TV Time sul tuo telefono, recati all'interno della scheda del tuo profilo e accedi alle impostazioni dell'account. Individua la voce relativa alla privacy o alla gestione dei dati e richiedi l'esportazione ufficiale dei tuoi dati (GDPR Data Export). Riceverai un link per scaricare il tuo archivio (solitamente un file in formato .json o .csv) direttamente sulla tua casella email o nella memoria dello smartphone.</p>
+                <p>Il primo passo consiste nell'ottenere il file con la tua cronologia. Puoi richiederlo in modo immediato accedendo alla pagina ufficiale di esportazione di TV Time: <a href="https://gdpr.tvtime.com/gdpr/self-service" target="_blank" rel="noopener">gdpr.tvtime.com/gdpr/self-service</a>. Effettua l'accesso con il tuo account e richiedi il backup (GDPR Data Export). Riceverai un link per scaricare il tuo archivio (un file compresso contenente i dati in formato .json o .csv).</p>
+                <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted);">
+                    💡 <strong>Consiglio pratico:</strong> Ti conviene fare la richiesta direttamente dal tuo smartphone, così potrai scaricare il file direttamente nella memoria del telefono dove ti serve. In alternativa, se fai l'operazione da PC, dovrai successivamente inviare o copiare il file sul telefono (ad esempio tramite email, WhatsApp o Google Drive).
+                </p>
             </div>
 
+<!-- STEP 2 CON CAROSELLO DI NAVIGAZIONE INTERNA -->
             <div class="step-block">
                 <h3>2. Prepara Episora-WatchMate</h3>
-                <p>Se non l'hai ancora fatto, scarica l'applicazione dal Play Store. Apri l'app sul tuo dispositivo Android, premi sull'icona del tuo <strong>Profilo</strong> in basso a destra e seleziona la voce <strong>Impostazioni Avanzate</strong>. Fai clic sul pulsante contrassegnato come <strong>"Importa Dati Esterni"</strong>.</p>
+                <p>Se non l'hai ancora fatto, procurati l'applicazione sul tuo dispositivo Android (<a href="#" onclick="alert('L\'applicazione è in fase di pubblicazione e sarà disponibile a breve sul Play Store!'); return false;">Disponibile a breve sul Play Store</a>). Apri l'app sul tuo telefono, tocca l'icona del tuo <strong>Profilo</strong> posizionata in basso a destra, premi sull'icona dell'<strong>Ingranaggio</strong> in alto a destra per aprire le opzioni, seleziona la voce <strong>Impostazioni app</strong> e infine fai clic sul pulsante <strong>"Importa dati tv-time gdpr"</strong>.</p>
+                
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide active">
+                            <img src="schermata-1-profilo.jpg" alt="Sezione profilo in basso a destra">
+                            <div class="carousel-caption"><strong>Passo 1:</strong> Vai sul profilo in basso a destra.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-2-ingranaggio.jpg" alt="Icona ingranaggio in alto a destra">
+                            <div class="carousel-caption"><strong>Passo 2:</strong> Premi sull'ingranaggio in alto a destra.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-3-impostazioni.jpg" alt="Voce impostazioni app">
+                            <div class="carousel-caption"><strong>Passo 3:</strong> Premi su impostazioni app.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-4-importa.jpg" alt="Pulsante importa dati TV time GDPR">
+                            <div class="carousel-caption"><strong>Passo 4:</strong> Premi su <em>"Importa dati TV time GDPR zip / csv"</em>.</div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev">❮</button>
+                    <button class="carousel-next">❯</button>
+
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
             </div>
 
+
+<!-- ==================== PUNTO 3 ==================== -->
             <div class="step-block">
-                <h3>3. Carica il file e sincronizza</h3>
-                <p>Il gestore file del tuo smartphone ti chiederà di selezionare un documento: seleziona il file di backup che hai precedentemente scaricato da TV Time. L'algoritmo intelligente di Episora-WatchMate elaborerà i dati in pochi secondi, ricreando la tua esatta lista di serie TV in corso, i film visti e gli episodi completati, senza sovrascrivere eventuali modifiche locali già effettuate.</p>
+                <h3>3. Carica e Importa il File</h3>
+                <p>Una volta entrato nella sezione di importazione all'interno dell'app, l'operazione si svolgerà in questi passaggi chiave:</p>
+                
+                <!-- Lista testuale dei passaggi descritti -->
+                <ul class="step-sublist">
+                    <li><strong>Seleziona il file:</strong> Premi sul pulsante iniziale per avviare la ricerca del file sul tuo dispositivo.</li>
+                    <li><strong>Scegli il file dal telefono:</strong> Trova e seleziona il file ZIP o CSV che hai scaricato in precedenza da TV Time.</li>
+                    <li><strong>Verifica il riepilogo:</strong> L'app analizzerà il file e ti mostrerà un'anteprima del contenuto rilevato (quante serie TV, film ed episodi sono pronti da importare).</li>
+                    <li><strong>Avvia l'importazione:</strong> Premi sul pulsante per confermare che i dati mostrati nel riepilogo siano corretti.</li>
+                    <li><strong>Conferma finale:</strong> Dai l'ok definitivo nel popup di sicurezza che compare a schermo.</li>
+                    <li><strong>Consenti le notifiche:</strong> Accetta la richiesta dell'app di inviarti notifiche. Sarà utile per avvisarti con un messaggio non appena l'importazione (che può richiedere qualche minuto) sarà terminata.</li>
+                    <li><strong>Attendi il completamento:</strong> L'importazione viene avviata ed eseguita in background.</li>
+                </ul>
+
+                <p style="margin-bottom: 15px; color: var(--text-muted);">
+                    📸 <em>Usa le frecce qui sotto per visualizzare la sequenza degli screenshot dei passaggi descritti sopra:</em>
+                </p>
+
+                <!-- Carosello Punto 3 -->
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <!-- Slide 1: Seleziona File -->
+                        <div class="carousel-slide active">
+                            <img src="import-1-seleziona.jpg" alt="Seleziona file">
+                            <div class="carousel-caption"><strong>Passo 1:</strong> Premi sul pulsante per selezionare il file.</div>
+                        </div>
+                        <!-- Slide 2: Scegli dal Telefono -->
+                        <div class="carousel-slide">
+                            <img src="import-2-scegli-file.jpg" alt="Scegli file dal telefono">
+                            <div class="carousel-caption"><strong>Passo 2:</strong> Scegli il file ZIP o CSV esportato da TV Time dal tuo dispositivo.</div>
+                        </div>
+                        <!-- Slide 3: Riepilogo Contenuto -->
+                        <div class="carousel-slide">
+                            <img src="import-3-riepilogo.jpg" alt="Riepilogo contenuto">
+                            <div class="carousel-caption"><strong>Passo 3:</strong> Verrà visualizzato a schermo un riepilogo del contenuto rilevato nel file.</div>
+                        </div>
+                        <!-- Slide 4: Importa Dati -->
+                        <div class="carousel-slide">
+                            <img src="import-4-premi-importa.jpg" alt="Premere importa dati">
+                            <div class="carousel-caption"><strong>Passo 4:</strong> Premi sul pulsante per avviare l'importazione dei dati.</div>
+                        </div>
+                        <!-- Slide 5: Conferma Importazione -->
+                        <div class="carousel-slide">
+                            <img src="import-5-conferma.jpg" alt="Confermare importazione">
+                            <div class="carousel-caption"><strong>Passo 5:</strong> Conferma la volontà di procedere con l'importazione nel popup che compare.</div>
+                        </div>
+                        <!-- Slide 6: Accesso Notifiche -->
+                        <div class="carousel-slide">
+                            <img src="import-6-notifiche.jpg" alt="Consentire accesso alle notifiche">
+                            <div class="carousel-caption"><strong>Passo 6:</strong> Consenti l'accesso alle notifiche per ricevere aggiornamenti sull'avanzamento.</div>
+                        </div>
+                        <!-- Slide 7: Importazione Eseguita -->
+                        <div class="carousel-slide">
+                            <img src="import-7-esecuzione.jpg" alt="Importazione in esecuzione">
+                            <div class="carousel-caption"><strong>Passo 7:</strong> L'importazione viene avviata ed eseguita.</div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev">❮</button>
+                    <button class="carousel-next">❯</button>
+
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <!-- Box di Consiglio/Attenzione -->
+                <div class="info-alert-box">
+                    <div class="info-alert-icon">💡</div>
+                    <div class="info-alert-content">
+                        <strong>Consiglio utile:</strong> Si consiglia di non chiudere l'applicazione mentre viene eseguita l'operazione. Se l'applicazione viene chiusa forzatamente l'importazione potrebbe interrompersi, ma non temere: potrai riprenderla in qualsiasi momento tornando semplicemente nel menu <em>Importa</em>.
+                    </div>
+                </div>
+            </div> <!-- Chiusura corretta del Punto 3 -->
+
+            <!-- STEP 4 -->
+            <div class="step-block">
+                <h3>4. Verifica i dati importati con il riepilogo</h3>
+                <p>Una volta completata l'elaborazione, l'applicazione ti mostrerà una schermata di riepilogo dettagliata. Qui potrai verificare con precisione il numero totale di serie TV importate, i film riconosciuti e gli episodi contrassegnati come visti. Controlla che i numeri corrispondano alle tue aspettative, potrai sistemare manualmente eventuali episodi/film non riconosciuti.</p>
+                <!-- Screenshot esplicativo del riepilogo dati -->
+                <img src="schermata-riepilogo-importazione-watchmate.jpg" alt="Schermata di riepilogo finale che mostra i dati importati correttamente in Episora-WatchMate" class="guide-img">
             </div>
 
             <h2>Cosa fare se riscontri problemi?</h2>
-            <p>Assicurati che il file scaricato non sia corrotto e che l'estensione corrisponda ai formati standard rilasciati dalla piattaforma di provenienza. Una volta completata l'importazione, ti consigliamo di recarti nella sezione di sincronizzazione e attivare il <strong>backup crittografato su Google Drive</strong> per proteggere ulteriormente il tuo nuovo archivio locale da qualsiasi imprevisto.</p>
+            <p>Assicurati che il file estratto non sia danneggiato e che non sia stato modificato manualmente. Una volta completata con successo l'importazione dei 4 passaggi, ti consigliamo vivamente di accedere alla sezione dedicata ai backup interni dell'applicazione e attivare il <strong>backup crittografato su Google Drive</strong>: in questo modo la tua nuova libreria locale sarà per sempre al sicuro da smarrimenti o guasti del telefono.</p>
+            <p>Puoi usare la sezione assistenza e contatti per chiederci una mano! faremo il possibile</p>
 
             <!-- Box di conversione finale -->
             <div class="promo-box">
                 <h3>Pronto a riprendere il controllo delle tue serie TV?</h3>
                 <p>Scarica Episora-WatchMate, importa i tuoi dati in un clic e non rischiare mai più di perdere la tua cronologia.</p>
-                  <a href="#" class="cta-btn" onclick="alert('L\'applicazione è in fase di pubblicazione e sarà disponibile a breve sul Play Store!'); return false;">Disponibile a breve sul Play Store</a>
+                <a href="#" class="cta-btn" onclick="alert('L\'applicazione è in fase di pubblicazione e sarà disponibile a breve sul Play Store!'); return false;">Disponibile a breve sul Play Store</a>
             </div>
         </main>
     </div>
 
 </body>
+<script>
+    // Inizializza automaticamente tutti i caroselli nella pagina
+    document.querySelectorAll('.carousel-container').forEach((container) => {
+        const slides = container.querySelectorAll('.carousel-slide');
+        const dots = container.querySelectorAll('.dot');
+        const prevBtn = container.querySelector('.carousel-prev');
+        const nextBtn = container.querySelector('.carousel-next');
+        
+        let slideIndex = 0;
+        let slideTimer = null;
+        let isPaused = false;
+        let touchTimeout = null;
+
+        // Funzione per aggiornare la visualizzazione delle slide di QUESTO carosello
+        function showSlides(index) {
+            if (index >= slides.length) { slideIndex = 0; }
+            if (index < 0) { slideIndex = slides.length - 1; }
+            
+            slides.forEach((slide, i) => {
+                slide.classList.remove("active");
+                if (dots[i]) dots[i].classList.remove("active");
+            });
+            
+            slides[slideIndex].classList.add("active");
+            if (dots[slideIndex]) dots[slideIndex].classList.add("active");
+        }
+
+        // Funzione per avviare il timer automatico di QUESTO carosello
+        function startTimer() {
+            clearInterval(slideTimer);
+            if (!isPaused) {
+                slideTimer = setInterval(() => {
+                    slideIndex++;
+                    showSlides(slideIndex);
+                }, 4000); // 4 secondi per slide
+            }
+        }
+
+        // Funzione per fermare il timer
+        function stopTimer() {
+            clearInterval(slideTimer);
+        }
+
+        // Eventi per le Frecce
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                slideIndex--;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                slideIndex++;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        }
+
+        // Eventi per i Pallini (Dots)
+        dots.forEach((dot, dotIdx) => {
+            dot.addEventListener('click', () => {
+                slideIndex = dotIdx;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        });
+
+        // --- GESTIONE PAUSA CON MOUSE (DESKTOP) ---
+        container.addEventListener("mouseenter", () => {
+            isPaused = true;
+            stopTimer();
+        });
+
+        container.addEventListener("mouseleave", () => {
+            isPaused = false;
+            startTimer();
+        });
+
+        // --- GESTIONE PAUSA CON TOUCH (MOBILE) ---
+        container.addEventListener("touchstart", () => {
+            isPaused = true;
+            stopTimer();
+            clearTimeout(touchTimeout);
+        }, {passive: true});
+
+        container.addEventListener("touchend", () => {
+            clearTimeout(touchTimeout);
+            // Riparte dopo 6 secondi di inattività sul touch
+            touchTimeout = setTimeout(() => {
+                isPaused = false;
+                startTimer();
+            }, 6000);
+        }, {passive: true});
+
+        // Avvio iniziale per questo specifico carosello
+        showSlides(slideIndex);
+        startTimer();
+    });
+</script>
+
 </html>
