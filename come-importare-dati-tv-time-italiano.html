@@ -294,6 +294,109 @@
         max-height: 280px;
     }
 }
+/* --- STILE SCHERMO INTERO (LIGHTBOX) --- */
+
+/* Indicatore visivo (lente d'ingrandimento) sulle immagini cliccabili */
+.carousel-slides img, 
+.step-block > img {
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+}
+.carousel-slides img:hover, 
+.step-block > img:hover {
+    opacity: 0.9; /* Leggero feedback visivo al passaggio del mouse */
+}
+
+/* Sfondo scuro coprente */
+.lightbox-modal {
+    display: none; /* Nascosto di default, gestito via JS */
+    position: fixed;
+    z-index: 10000; /* Sopra a qualsiasi altro elemento, inclusi i menu */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 15, 26, 0.95); /* Sfondo scurissimo coerente con il tema scuro */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Classe attivata da JS per mostrare il lightbox con dissolvenza */
+.lightbox-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* Immagine ingrandita */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh; /* Impedisce all'immagine di uscire dallo schermo in altezza */
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: zoom-out; /* Clicca sull'immagine per uscire */
+}
+
+/* Effetto zoom-in quando il lightbox si apre */
+.lightbox-modal.show .lightbox-content {
+    transform: scale(1);
+}
+
+/* Pulsante per chiudere (X) in alto a destra */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #a0aec0;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s, transform 0.2s;
+}
+.lightbox-close:hover {
+    color: #48bb78; /* Cambia in verde al passaggio */
+    transform: scale(1.1);
+}
+
+/* Didascalia descrittiva in basso */
+.lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    text-align: center;
+    background: rgba(26, 32, 44, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 10px 20px;
+    border-radius: 30px;
+    max-width: 80%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ottimizzazione per dispositivi mobili */
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 75vh;
+    }
+    .lightbox-close {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
+    .lightbox-caption {
+        font-size: 0.85rem;
+        bottom: 20px;
+        width: 85%;
+    }
+}
     </style>
 </head>
 <body>
@@ -462,7 +565,11 @@
             </div>
         </main>
     </div>
-
+<div id="imageLightbox" class="lightbox-modal">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightboxImg" alt="Immagine ingrandita">
+    <div id="lightboxCaption" class="lightbox-caption"></div>
+</div>
 </body>
 <script>
     // Inizializza automaticamente tutti i caroselli nella pagina
@@ -563,6 +670,66 @@
         // Avvio iniziale per questo specifico carosello
         showSlides(slideIndex);
         startTimer();
+    });
+    // --- GESTIONE SCHERMO INTERO (LIGHTBOX) ---
+    const lightbox = document.getElementById("imageLightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxClose = document.querySelector(".lightbox-close");
+
+    // Intercetta tutte le immagini dei caroselli e quelle singole del corpo guida
+    const imagesToZoom = document.querySelectorAll('.carousel-slides img, .step-block > img');
+
+    imagesToZoom.forEach(img => {
+        img.addEventListener('click', () => {
+            // Copia la sorgente dell'immagine e il testo alternativo
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            
+            // Cerca se esiste una didascalia specifica del carosello
+            const slideParent = img.closest('.carousel-slide');
+            if (slideParent) {
+                const captionEl = slideParent.querySelector('.carousel-caption');
+                lightboxCaption.innerHTML = captionEl ? captionEl.innerHTML : img.alt;
+            } else {
+                lightboxCaption.innerHTML = img.alt;
+            }
+            
+            // Mostra l'elemento e attiva la transizione di opacità
+            lightbox.style.display = "flex";
+            setTimeout(() => {
+                lightbox.classList.add("show");
+            }, 10);
+            
+            // Blocca temporaneamente lo scorrimento della pagina web sotto
+            document.body.style.overflow = "hidden";
+        });
+    });
+
+    // Funzione per chiudere l'immagine a schermo intero
+    function closeLightbox() {
+        lightbox.classList.remove("show");
+        // Aspetta la fine dell'animazione (300ms) prima di nascondere l'elemento dal DOM
+        setTimeout(() => {
+            lightbox.style.display = "none";
+        }, 300);
+        // Ripristina lo scorrimento della pagina
+        document.body.style.overflow = "";
+    }
+
+    // Chiude se clicchi sulla "X", sull'immagine stessa o sullo sfondo scuro
+    lightbox.addEventListener('click', (e) => {
+        // Chiude solo se non si sta cercando di fare cose strane (es. click destro per salvare l'immagine)
+        if (e.target === lightbox || e.target === lightboxImg || e.target === lightboxClose) {
+            closeLightbox();
+        }
+    });
+
+    // Supporto per tastiera: chiude premendo il tasto ESC (molto comodo da PC)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && lightbox.classList.contains("show")) {
+            closeLightbox();
+        }
     });
 </script>
 
