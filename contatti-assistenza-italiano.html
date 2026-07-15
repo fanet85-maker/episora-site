@@ -228,6 +228,8 @@
                 <div id="form-status" class="form-status"></div>
 
                 <button type="submit" class="submit-btn">Invia Messaggio</button>
+                <!-- Questo div mostrerà il messaggio di successo o errore -->
+<               div id="form-feedback" style="display: none; margin-top: 15px; padding: 12px; border-radius: 6px; font-weight: 500; text-align: center; font-size: 0.95em;"></div
             </form>
         </div>
     </div>
@@ -237,40 +239,45 @@
     </footer>
 
     <!-- SCRIPT PER LA GESTIONE DEL FORM -->
-    <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impedisce il ricaricamento nativo della pagina
+   <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impedisce il ricaricamento nativo della pagina
 
-            const btn = document.querySelector('.submit-btn');
-            const statusDiv = document.getElementById('form-status');
-            
-            // Stato di caricamento
-            btn.textContent = 'Invio in corso...';
-            btn.disabled = true;
-            statusDiv.className = 'form-status';
-            statusDiv.style.display = 'none';
+        const btn = document.querySelector('.submit-btn');
+        const statusDiv = document.getElementById('form-status');
+        
+        // Stato di caricamento
+        btn.textContent = 'Invio in corso...';
+        btn.disabled = true;
+        statusDiv.className = 'form-status';
+        statusDiv.style.display = 'none'; // Nasconde il box all'inizio
 
-            // TODO: Inserisci qui i tuoi ID personali generati su EmailJS
-            const serviceID = 'Aruba';
-            const templateID = 'template_d4o84fw';
+        const serviceID = 'Aruba';
+        const templateID = 'template_d4o84fw';
 
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    // Successo
-                    btn.textContent = 'Invia Messaggio';
-                    btn.disabled = false;
-                    statusDiv.textContent = 'Grazie! Il tuo messaggio è stato inviato con successo. Ti risponderemo il prima possibile.';
-                    statusDiv.className = 'form-status success';
-                    document.getElementById('contact-form').reset(); // Pulisce i campi compilati
-                }, (error) => {
-                    // Errore
-                    btn.textContent = 'Invia Messaggio';
-                    btn.disabled = false;
-                    statusDiv.textContent = 'Ops! Si è verificato un errore durante l\'invio. Per favore, riprova più tardi o scrivici direttamente.';
-                    statusDiv.className = 'form-status error';
-                    console.error('Errore dettagliato di EmailJS:', error);
-                });
-        });
-    </script>
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                // === Successo ===
+                btn.textContent = 'Invia Messaggio';
+                btn.disabled = false;
+                
+                statusDiv.textContent = 'Grazie! Il tuo messaggio è stato inviato con successo. Ti risponderemo il prima possibile.';
+                statusDiv.className = 'form-status success';
+                statusDiv.style.display = 'block'; // <--- AGGIUNTO: rende visibile il messaggio di successo!
+                
+                document.getElementById('contact-form').reset(); // Pulisce i campi compilati
+            }, (error) => {
+                // === Errore ===
+                btn.textContent = 'Invia Messaggio';
+                btn.disabled = false;
+                
+                statusDiv.textContent = 'Ops! Si è verificato un errore durante l\'invio. Per favore, riprova più tardi o scrivici direttamente.';
+                statusDiv.className = 'form-status error';
+                statusDiv.style.display = 'block'; // <--- AGGIUNTO: rende visibile il messaggio di errore!
+                
+                console.error('Errore dettagliato di EmailJS:', error);
+            });
+    });
+</script>
 </body>
 </html>
