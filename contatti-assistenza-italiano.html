@@ -116,6 +116,29 @@
             outline: none;
             border-color: var(--accent-color);
         }
+
+        /* Stato della spedizione (Messaggi feedback) */
+        .form-status {
+            display: none;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .form-status.success {
+            display: block;
+            background: rgba(72, 187, 120, 0.15);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        .form-status.error {
+            display: block;
+            background: rgba(245, 101, 101, 0.15);
+            border: 1px solid #f56565;
+            color: #f56565;
+        }
+
         .submit-btn {
             background-color: var(--accent-color);
             color: #000;
@@ -126,10 +149,15 @@
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s;
+            transition: transform 0.2s, opacity 0.2s;
         }
         .submit-btn:hover {
             transform: scale(1.02);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
         footer {
             text-align: center;
@@ -140,6 +168,16 @@
             font-size: 0.9rem;
         }
     </style>
+
+    <!-- INIZIALIZZAZIONE SDK EMAILJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // TODO: Sostituisci "IL_TUO_PUBLIC_KEY_DI_EMAILJS" con la tua chiave pubblica reale
+            // La trovi su EmailJS in: Account -> API Keys -> Public Key
+            emailjs.init("t40gvvoLX9Mk-S9qC");
+        })();
+    </script>
 </head>
 <body>
 
@@ -164,16 +202,16 @@
         <div class="contact-form-container">
             <h2>Invia una Richiesta</h2>
             
-            <!-- Consiglio: Sostituisci l'action con l'URL del tuo gestore email o usa "mailto:la-tua-mail@example.com" -->
-            <form action="https://formspree.io/f/TUO_ID_FORMSPREE" method="POST">
+            <!-- Rimosso l'action esterno: l'invio ora viene controllato interamente via JS -->
+            <form id="contact-form">
                 <div class="form-group">
                     <label for="name">Il tuo Nome</label>
-                    <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
+                    <input type="text" id="name" name="user_name" placeholder="Inserisci il tuo nome" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Indirizzo Email</label>
-                    <input type="email" id="email" name="_replyto" placeholder="nome@esempio.com" required>
+                    <input type="email" id="email" name="user_email" placeholder="nome@esempio.com" required>
                 </div>
                 
                 <div class="form-group">
@@ -186,6 +224,9 @@
                     <textarea id="message" name="message" rows="6" placeholder="Scrivi qui i dettagli della tua richiesta..." required></textarea>
                 </div>
                 
+                <!-- Div dinamico per mostrare i messaggi di successo o errore -->
+                <div id="form-status" class="form-status"></div>
+
                 <button type="submit" class="submit-btn">Invia Messaggio</button>
             </form>
         </div>
@@ -195,5 +236,41 @@
         <p>&copy; 2026 Episora-WatchMate. Tutti i diritti riservati.</p>
     </footer>
 
+    <!-- SCRIPT PER LA GESTIONE DEL FORM -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impedisce il ricaricamento nativo della pagina
+
+            const btn = document.querySelector('.submit-btn');
+            const statusDiv = document.getElementById('form-status');
+            
+            // Stato di caricamento
+            btn.textContent = 'Invio in corso...';
+            btn.disabled = true;
+            statusDiv.className = 'form-status';
+            statusDiv.style.display = 'none';
+
+            // TODO: Inserisci qui i tuoi ID personali generati su EmailJS
+            const serviceID = 'IL_TUO_SERVICE_ID';
+            const templateID = 'IL_TUO_TEMPLATE_ID';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    // Successo
+                    btn.textContent = 'Invia Messaggio';
+                    btn.disabled = false;
+                    statusDiv.textContent = 'Grazie! Il tuo messaggio è stato inviato con successo. Ti risponderemo il prima possibile.';
+                    statusDiv.className = 'form-status success';
+                    document.getElementById('contact-form').reset(); // Pulisce i campi compilati
+                }, (error) => {
+                    // Errore
+                    btn.textContent = 'Invia Messaggio';
+                    btn.disabled = false;
+                    statusDiv.textContent = 'Ops! Si è verificato un errore durante l\'invio. Per favore, riprova più tardi o scrivici direttamente.';
+                    statusDiv.className = 'form-status error';
+                    console.error('Errore dettagliato di EmailJS:', error);
+                });
+        });
+    </script>
 </body>
 </html>
