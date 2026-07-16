@@ -200,9 +200,28 @@
         .app-features-grid {
             margin-top: 60px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(5, minmax(0, 1fr));
             gap: 20px;
         }
+
+        @media (max-width: 1100px) {
+            .app-features-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-features-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .feature-card {
             background: var(--card-bg);
             padding: 30px 20px;
@@ -388,6 +407,13 @@
                     <span class="feature-icon">📊</span>
                     <h3>Statistiche di Visione</h3>
                     <p>Visualizza un riepilogo essenziale dei tuoi progressi, con il calcolo totale dei minuti e dei giorni che hai dedicato a film e serie TV.</p>
+                </div>
+
+                <!-- Funzione 5 -->
+                <div class="feature-card">
+                    <span class="feature-icon">🔁</span>
+                    <h3>Rewatch</h3>
+                    <p>Puoi rimettere in visione una serie che è già finita e tenere traccia del tuo progresso, così da riprenderla in qualsiasi momento senza perdere il filo.</p>
                 </div>
             </div>
         </section>
