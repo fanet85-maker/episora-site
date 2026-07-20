@@ -227,9 +227,18 @@
             border-color: var(--accent-color);
         }
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: inline-block;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 15px auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        @media (max-width: 480px) {
+            .feature-icon {
+                width: 64px;
+                height: 64px;
+            }
         }
         .feature-card h3 {
             margin: 10px 0;
@@ -361,31 +370,31 @@
             
             <div class="app-features-grid">
                 <div class="feature-card">
-                    <span class="feature-icon">🔍</span>
+                    <img class="feature-icon" src="sora_feature_search_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Sora with a magnifying glass to search TV shows and movies">
                     <h3>Search and Discover Details</h3>
                     <p>Quickly find any movie or TV show. Access complete episode details, plot summaries, and exact runtimes.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📚</span>
+                    <img class="feature-icon" src="sora_feature_library_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Sora with a media library box to manage your library">
                     <h3>Manage Your Library</h3>
                     <p>Add your favorite shows to your archive and keep an exact record of the episodes you have already watched.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📌</span>
+                    <img class="feature-icon" src="sora_feature_watchlist_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Sora with a checklist to organize your watchlist">
                     <h3>Watchlist</h3>
                     <p>Organize a dedicated watchlist with all the movies and TV shows you plan to catch up on later.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📊</span>
+                    <img class="feature-icon" src="sora_feature_stats_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Sora with a chart to view your watching statistics">
                     <h3>Viewing Stats</h3>
                     <p>Get a simple summary of your progress, including the total minutes and days you have spent watching movies and series.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">🔁</span>
+                    <img class="feature-icon" src="sora_feature_rewatch_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Sora with a rewatch icon to track rewatches">
                     <h3>Rewatch & Tracking</h3>
                     <p>Rewatch a series that has already ended and keep track of your progress so you can pick it up anytime without losing the thread.</p>
                 </div>
