@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.episora-watchmate.it/</loc>
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/alternativa-tv-time-italiano.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/alternativa-tv-time-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/tv-time-alternative-android-app.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.episora-watchmate.it/" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/tv-time-alternative-android-app.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/alternativa-tv-time-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/tv-time-alternative-android-app.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.episora-watchmate.it/" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/come-importare-dati-tv-time-italiano.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/come-importare-dati-tv-time-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/how-to-import-tv-time-data-android.html" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/how-to-import-tv-time-data-android.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/come-importare-dati-tv-time-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/how-to-import-tv-time-data-android.html" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/how-to-backup-android-tv-tracker-google-drive.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/privacy-policy-italiano.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/privacy-policy-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/privacy-policy-english.html" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/privacy-policy-english.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/privacy-policy-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/privacy-policy-english.html" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/contatti-assistenza-italiano.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/contatti-assistenza-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/contact-support-english.html" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/contact-support-english.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/contatti-assistenza-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/contact-support-english.html" />
+  </url>
+
+</urlset>
