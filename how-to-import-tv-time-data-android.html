@@ -16,20 +16,360 @@
     <meta name="description" content="Step-by-step support guide. Learn how to export your tracking data from TV Time and import it for free into Episora-WatchMate for Android.">
     <!-- Gli stili CSS rimangono identici per coerenza estetica globale -->
     <style>
-        :root { --bg-color: #0f111a; --card-bg: #1a1d2e; --accent-color: #48bb78; --text-color: #ffffff; --text-muted: #a0aec0; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        .back-btn { display: inline-block; color: var(--text-muted); text-decoration: none; margin-bottom: 30px; font-weight: bold; transition: color 0.2s; }
-        .back-btn:hover { color: var(--accent-color); }
-        h1 { font-size: 2.3rem; line-height: 1.3; margin-bottom: 20px; }
-        .meta-info { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 40px; border-bottom: 1px solid #2d3748; padding-bottom: 20px; }
-        .guide-content h2 { font-size: 1.6rem; color: var(--accent-color); margin-top: 40px; }
-        .step-block { background: var(--card-bg); padding: 25px; border-radius: 12px; margin-top: 25px; border-left: 4px solid var(--accent-color); }
-        .step-block h3 { margin-top: 0; font-size: 1.25rem; color: #fff; }
-        .promo-box { background: linear-gradient(135deg, #1a1d2e 0%, #0b0d14 100%); border: 1px solid #2d3748; padding: 40px; border-radius: 20px; text-align: center; margin-top: 60px; }
-        .promo-box h3 { font-size: 1.5rem; margin-top: 0; }
-        .cta-btn { background-color: var(--accent-color); color: #000; padding: 12px 35px; font-size: 1.1rem; font-weight: bold; text-decoration: none; border-radius: 30px; display: inline-block; margin-top: 20px; transition: transform 0.2s; }
-        .cta-btn:hover { transform: scale(1.05); }
+        :root {
+            --bg-color: #0f111a;
+            --card-bg: #1a1d2e;
+            --accent-color: #48bb78;
+            --text-color: #ffffff;
+            --text-muted: #a0aec0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .back-btn {
+            display: inline-block;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .back-btn:hover {
+            color: var(--accent-color);
+        }
+        h1 {
+            font-size: 2.3rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .meta-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #2d3748;
+            padding-bottom: 20px;
+        }
+        .guide-content h2 {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            margin-top: 40px;
+        }
+        .step-block {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border-left: 4px solid var(--accent-color);
+        }
+        .step-block h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: #fff;
+        }
+        .step-block a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .step-block a:hover {
+            color: #fff;
+        }
+        .guide-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto 5px auto;
+            border-radius: 10px;
+            border: 2px solid #2d3748;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .promo-box {
+            background: linear-gradient(135deg, #1a1d2e 0%, #0b0d14 100%);
+            border: 1px solid #2d3748;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .promo-box h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 25px auto 10px auto;
+            background: #0f111a;
+            border: 1px solid #2d3748;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+        }
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            animation: fadeEffect 0.5s ease-in-out;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        .carousel-slide img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            padding-top: 15px;
+        }
+        .carousel-caption {
+            background: rgba(26, 29, 46, 0.95);
+            color: var(--text-color);
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #2d3748;
+            line-height: 1.5;
+        }
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            background: rgba(15, 17, 26, 0.8);
+            color: var(--accent-color);
+            border: 1px solid #2d3748;
+            font-size: 20px;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            user-select: none;
+            z-index: 5;
+        }
+        .carousel-prev:hover, .carousel-next:hover {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+        }
+        .carousel-prev { left: 10px; }
+        .carousel-next { right: 10px; }
+        .carousel-dots {
+            text-align: center;
+            padding: 10px 0;
+            background: #0b0d14;
+        }
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #4a5568;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .dot.active, .dot:hover {
+            background-color: var(--accent-color);
+        }
+        @keyframes fadeEffect {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            .carousel-prev, .carousel-next {
+                padding: 6px 10px;
+                font-size: 16px;
+            }
+            .carousel-caption {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+            }
+        }
+        .info-alert-box {
+            display: flex;
+            background: rgba(72, 187, 120, 0.1);
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #cbd5e0;
+        }
+        .info-alert-icon {
+            font-size: 1.3rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .info-alert-content strong {
+            color: #48bb78;
+        }
+        .step-sublist {
+            margin: 20px 0 25px 5px;
+            padding: 0;
+            list-style: none;
+            counter-reset: substep-counter;
+        }
+        .step-sublist li {
+            position: relative;
+            margin-bottom: 12px;
+            padding-left: 35px;
+            line-height: 1.6;
+            color: #cbd5e0;
+            font-size: 0.95rem;
+        }
+        .step-sublist li::before {
+            content: counter(substep-counter);
+            counter-increment: substep-counter;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            background: rgba(72, 187, 120, 0.15);
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 0.8rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #48bb78;
+        }
+        .step-sublist li strong {
+            color: #fff;
+        }
+        .step-block > img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            display: block;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .carousel-slides img {
+                height: 280px;
+            }
+            .step-block > img {
+                max-height: 280px;
+            }
+        }
+        .carousel-slides img,
+        .step-block > img {
+            cursor: zoom-in;
+            transition: opacity 0.2s ease;
+        }
+        .carousel-slides img:hover,
+        .step-block > img:hover {
+            opacity: 0.9;
+        }
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 15, 26, 0.95);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: zoom-out;
+        }
+        .lightbox-modal.show .lightbox-content {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #a0aec0;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .lightbox-close:hover {
+            color: #48bb78;
+            transform: scale(1.1);
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            text-align: center;
+            background: rgba(26, 32, 44, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            max-width: 80%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 75vh;
+            }
+            .lightbox-close {
+                top: 15px;
+                right: 20px;
+                font-size: 35px;
+            }
+            .lightbox-caption {
+                font-size: 0.85rem;
+                bottom: 20px;
+                width: 85%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -45,33 +385,284 @@
             
             <p>Thanks to the native migration feature embedded inside <strong>Episora-WatchMate</strong>, you can transfer your entire history seamlessly. Your personal data will be kept locally on your Android device, safe from any future service shutdowns.</p>
 
-            <h2>The 3 steps to complete your migration:</h2>
+            <h2>The 4 steps to complete your migration:</h2>
+
+            <p style="margin: 15px 0 20px; padding: 12px 15px; border-left: 4px solid #e74c3c; background: #fff5f5; color: #7f1d1d; border-radius: 6px;">
+                <strong>Important notice:</strong> TV Time permanently shut down its servers on July 15, 2026, removing all data that was not exported. Unfortunately, it is no longer possible to download your history. If you previously requested a backup through GDPR, you can import that file.
+            </p>
 
             <div class="step-block">
                 <h3>1. Export data from TV Time</h3>
-                <p>Open the TV Time application on your mobile device, navigate to your personal account profile page, and open the account settings dashboard. Find the option related to privacy or data management and request an official account data export (GDPR data protocol). You will receive an export file (usually wrapped in a .json or .csv format) delivered straight to your email or downloaded directly to your local device memory.</p>
+                <p>The first step is to obtain the file containing your history. You can request it immediately by visiting the official TV Time export page: <a href="https://gdpr.tvtime.com/gdpr/self-service" target="_blank" rel="noopener">gdpr.tvtime.com/gdpr/self-service</a>. Log in with your account and request the backup (GDPR Data Export). You will receive a download link for your archive, a compressed file containing your data in .json or .csv format.</p>
+                <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted);">
+                    💡 <strong>Practical tip:</strong> It is best to request the export directly from your smartphone so you can download the file straight to your phone storage. If you do it from a PC, you will need to send or copy the file to your phone afterwards (for example by email, WhatsApp, or Google Drive).
+                </p>
             </div>
 
             <div class="step-block">
-                <h3>2. Set up Episora-WatchMate</h3>
-                <p>If you haven't already, download our application from the Google Play Store. Launch the app on your Android smartphone, tap on your <strong>Profile</strong> navigation tab in the bottom right corner, and open the <strong>Advanced Settings</strong> menu. Click on the button labeled <strong>"Import External Data Backup"</strong>.</p>
+                <h3>2. Prepare Episora-WatchMate</h3>
+                <p>If you have not done so already, get the app on your Android device (<a href="#" onclick="alert('The application is currently being published and will be available soon on the Play Store!'); return false;">Available soon on the Play Store</a>). Open the app on your phone, tap your <strong>Profile</strong> icon in the bottom-right corner, then tap the <strong>gear</strong> icon in the top-right to open the options, select <strong>App Settings</strong>, and finally tap the <strong>"Import tv-time gdpr data"</strong> button.</p>
+
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide active">
+                            <img src="schermata-1-profilo.jpg" alt="Profile section in the bottom-right corner">
+                            <div class="carousel-caption"><strong>Step 1:</strong> Go to the profile section in the bottom-right corner.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-2-ingranaggio.jpg" alt="Gear icon in the top-right corner">
+                            <div class="carousel-caption"><strong>Step 2:</strong> Tap the gear icon in the top-right corner.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-3-impostazioni.jpg" alt="App settings screen">
+                            <div class="carousel-caption"><strong>Step 3:</strong> Open the app settings section.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-4-importa.jpg" alt="Import data button">
+                            <div class="carousel-caption"><strong>Step 4:</strong> Tap the import data button.</div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev">❮</button>
+                    <button class="carousel-next">❯</button>
+
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
             </div>
 
             <div class="step-block">
-                <h3>3. Upload the backup file</h3>
-                <p>Your Android native file manager will prompt you to choose a document: select the backup file you previously requested from TV Time. The Episora-WatchMate data parser will process your list within seconds, instantly mapping your exact custom catalog of on-going TV shows, watched movies, and completed seasons directly onto your phone layout.</p>
+                <h3>3. Upload and import the file</h3>
+                <p>Once you are in the import section of the app, the process follows these key steps:</p>
+                <ul class="step-sublist">
+                    <li><strong>Select the file:</strong> Tap the initial button to start searching for the file on your device.</li>
+                    <li><strong>Choose the file from your phone:</strong> Find and select the ZIP or CSV file you previously downloaded from TV Time.</li>
+                    <li><strong>Review the summary:</strong> The app will analyze the file and show you a preview of the detected content (how many TV shows, movies, and episodes are ready to import).</li>
+                    <li><strong>Start the import:</strong> Tap the button to confirm that the data shown in the summary is correct.</li>
+                    <li><strong>Final confirmation:</strong> Confirm the action in the security popup that appears on screen.</li>
+                    <li><strong>Allow notifications:</strong> Accept the app's request to send you notifications. This is useful so you get a message as soon as the import, which may take a few minutes, is completed.</li>
+                    <li><strong>Wait for completion:</strong> The import starts and runs in the background.</li>
+                </ul>
+
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide active">
+                            <img src="import-1-seleziona.jpg" alt="Select file screen">
+                            <div class="carousel-caption"><strong>Step 1:</strong> Tap the button to select the file.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-2-scegli-file.jpg" alt="Choose file from phone screen">
+                            <div class="carousel-caption"><strong>Step 2:</strong> Choose the ZIP or CSV file from your device.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-3-riepilogo.jpg" alt="Import summary preview">
+                            <div class="carousel-caption"><strong>Step 3:</strong> Review the summary displayed by the app.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-4-premi-importa.jpg" alt="Start import button">
+                            <div class="carousel-caption"><strong>Step 4:</strong> Tap the button to begin the import.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-5-conferma.jpg" alt="Confirmation popup">
+                            <div class="carousel-caption"><strong>Step 5:</strong> Confirm the import in the popup.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-6-notifiche.jpg" alt="Notification permission prompt">
+                            <div class="carousel-caption"><strong>Step 6:</strong> Allow notifications for updates.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-7-esecuzione.jpg" alt="Import running screen">
+                            <div class="carousel-caption"><strong>Step 7:</strong> The import runs in the background.</div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev">❮</button>
+                    <button class="carousel-next">❯</button>
+
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <div class="info-alert-box" style="margin-top: 15px; padding: 12px 15px; border-left: 4px solid #3498db; background: #f4faff; color: #1f3c5a; border-radius: 6px;">
+                    <div class="info-alert-content">
+                        <strong>Helpful tip:</strong> It is recommended not to close the app while the operation is underway. If the app is force-closed, the import may be interrupted, but you can resume it at any time by returning to the <em>Import</em> menu.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>4. Verify the imported data with the summary</h3>
+                <p>Once processing is complete, the app will show a detailed summary screen. Here you can verify the total number of imported TV shows, recognized movies, and episodes marked as watched. Check that the numbers match your expectations; you can manually fix any episodes or movies that were not recognized.</p>
+                <img src="schermata-riepilogo-importazione-watchmate.jpg" alt="Final summary screen showing imported data in Episora-WatchMate" class="guide-img">
             </div>
 
             <h2>Need help or troubleshooting?</h2>
-            <p>Always double-check that the file extension matches the official formats provided by the external app and is not corrupted during download. Once your import is complete, we highly recommend setting up your **encrypted Google Drive cloud backup** inside our app interface to keep an additional layer of security over your local data storage.</p>
+            <p>Make sure the extracted file is not damaged and has not been manually modified. Once the 4-step import has completed successfully, we strongly recommend accessing the app's internal backup section and enabling <strong>encrypted Google Drive backup</strong>: this way your new local library will stay safe from loss or phone failures.</p>
+            <p>You can use the support and contact section if you need a hand—we will do our best.</p>
 
             <div class="promo-box">
                 <h3>Ready to take back control of your watch list?</h3>
                 <p>Download Episora-WatchMate, import your legacy file in seconds, and secure your media logs forever.</p>
-                <a href="YOUR_PLAYSTORE_URL" class="cta-btn">Download free on Google Play</a>
+                <a href="#" class="cta-btn" onclick="alert('The application is currently being published and will be available soon on the Play Store!'); return false;">Available soon on the Play Store</a>
             </div>
         </main>
     </div>
 
+    <div id="imageLightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" alt="Expanded image">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
 </body>
+<script>
+    document.querySelectorAll('.carousel-container').forEach((container) => {
+        const slides = container.querySelectorAll('.carousel-slide');
+        const dots = container.querySelectorAll('.dot');
+        const prevBtn = container.querySelector('.carousel-prev');
+        const nextBtn = container.querySelector('.carousel-next');
+
+        let slideIndex = 0;
+        let slideTimer = null;
+        let isPaused = false;
+        let touchTimeout = null;
+
+        function showSlides(index) {
+            if (index >= slides.length) { slideIndex = 0; }
+            if (index < 0) { slideIndex = slides.length - 1; }
+
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (dots[i]) dots[i].classList.remove('active');
+            });
+
+            slides[slideIndex].classList.add('active');
+            if (dots[slideIndex]) dots[slideIndex].classList.add('active');
+        }
+
+        function startTimer() {
+            clearInterval(slideTimer);
+            if (!isPaused) {
+                slideTimer = setInterval(() => {
+                    slideIndex++;
+                    showSlides(slideIndex);
+                }, 4000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(slideTimer);
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                slideIndex--;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                slideIndex++;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        }
+
+        dots.forEach((dot, dotIdx) => {
+            dot.addEventListener('click', () => {
+                slideIndex = dotIdx;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        });
+
+        container.addEventListener('mouseenter', () => {
+            isPaused = true;
+            stopTimer();
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isPaused = false;
+            startTimer();
+        });
+
+        container.addEventListener('touchstart', () => {
+            isPaused = true;
+            stopTimer();
+            clearTimeout(touchTimeout);
+        }, { passive: true });
+
+        container.addEventListener('touchend', () => {
+            clearTimeout(touchTimeout);
+            touchTimeout = setTimeout(() => {
+                isPaused = false;
+                startTimer();
+            }, 6000);
+        }, { passive: true });
+
+        showSlides(slideIndex);
+        startTimer();
+    });
+
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    const imagesToZoom = document.querySelectorAll('.carousel-slides img, .step-block > img');
+
+    imagesToZoom.forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+
+            const slideParent = img.closest('.carousel-slide');
+            if (slideParent) {
+                const captionEl = slideParent.querySelector('.carousel-caption');
+                lightboxCaption.innerHTML = captionEl ? captionEl.innerHTML : img.alt;
+            } else {
+                lightboxCaption.innerHTML = img.alt;
+            }
+
+            lightbox.style.display = 'flex';
+            setTimeout(() => {
+                lightbox.classList.add('show');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('show');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+        }, 300);
+        document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightboxImg || e.target === lightboxClose) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+            closeLightbox();
+        }
+    });
+</script>
 </html>
