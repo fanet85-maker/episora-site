@@ -61,6 +61,25 @@
         .top-bar .contact-link:hover {
             color: var(--accent-color);
         }
+        .top-bar .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .top-bar .social-link {
+            color: var(--accent-color);
+            font-size: 18px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .top-bar .social-link:hover {
+            color: #b78cff;
+        }
+        .top-bar .social-link svg {
+            display: block;
+        }
         .top-bar .lang-group a {
             margin-left: 15px;
         }
@@ -421,7 +440,14 @@
 
  <!-- Nuova Barra Superiore con Assistenza e Lingua -->
     <div class="top-bar">
-        <div>
+        <div class="top-bar-left">
+            <a href="https://www.instagram.com/episora.app?igsh=MXV4OGlqY2E1c2FlNg==" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8" fill="none"></rect>
+                    <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                    <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"></circle>
+                </svg>
+            </a>
             <a href="contatti-assistenza-italiano.html" class="contact-link">💬 Contatti & Assistenza</a>
         </div>
         <div class="lang-group">
