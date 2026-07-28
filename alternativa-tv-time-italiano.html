@@ -145,12 +145,77 @@
         .screenshot-container {
             text-align: center;
         }
-        .screenshot-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        .phone-mockup {
+            width: min(380px, 100%);
+            margin: 0 auto;
+            padding: 18px 16px 14px;
+            background: #0b0d14;
             border: 4px solid #2d3748;
+            border-radius: 46px;
+            box-shadow: 0 24px 50px rgba(0,0,0,0.55);
+            position: relative;
+        }
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 54px;
+            height: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 999px;
+        }
+        .phone-screen {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 30px;
+            background: #020206;
+            aspect-ratio: 9 / 20;
+            max-height: 760px;
+        }
+        .carousel-track {
+            display: flex;
+            width: 500%;
+            animation: carousel-slide 25s linear infinite;
+        }
+        .carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #020206;
+        }
+        .carousel-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            margin: 0;
+        }
+        @keyframes carousel-slide {
+            0%, 18% { transform: translateX(0); }
+            20%, 38% { transform: translateX(-100%); }
+            40%, 58% { transform: translateX(-200%); }
+            60%, 78% { transform: translateX(-300%); }
+            80%, 98% { transform: translateX(-400%); }
+            100% { transform: translateX(0); }
+        }
+        @media (max-width: 768px) {
+            .phone-mockup {
+                width: min(320px, 100%);
+                padding: 18px 16px 14px;
+            }
+            .carousel-track {
+                animation-duration: 22s;
+            }
         }
         .features h2, .faq-section h2 {
             font-size: 2rem;
@@ -378,8 +443,17 @@
         <!-- Layout Grafica + Vantaggi -->
         <div class="main-layout">
             <div class="screenshot-container">
-                <!-- Nome file immagine ottimizzato SEO con testo ALT descrittivo -->
-                <img src="episora-watchmate-interfaccia-android.jpg" alt="Schermata principale dell'applicazione Episora-WatchMate per tracciare serie TV e film su Android">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-android.jpg" alt="Interfaccia home di Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-cerca.jpg" alt="Interfaccia per cercare serie e film di Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-serie.jpg" alt="Libreria con le proprie serie tv di Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo.jpg" alt="Profilo di Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo2.jpg" alt="Statistiche del profilo di Episora-WatchMate"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="features">
