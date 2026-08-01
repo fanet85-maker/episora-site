@@ -28,7 +28,7 @@
         .step-block h3 { margin-top: 0; font-size: 1.25rem; color: #fff; }
         .promo-box { background: linear-gradient(135deg, #1a1d2e 0%, #0b0d14 100%); border: 1px solid #2d3748; padding: 40px; border-radius: 20px; text-align: center; margin-top: 60px; }
         .promo-box h3 { font-size: 1.5rem; margin-top: 0; }
-        .cta-btn { background-color: var(--accent-color); color: #fff; padding: 12px 35px; font-size: 1.1rem; font-weight: bold; text-decoration: none; border-radius: 30px; display: inline-block; margin-top: 20px; transition: transform 0.2s; }
+        .cta-btn { background-color: var(--accent-color); color: #fff; padding: 12px 35px; font-size: 1.1rem; font-weight: bold; text-decoration: none; border-radius: 30px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; transition: transform 0.2s; }
         .cta-btn:hover { transform: scale(1.05); }
     </style>
 </head>
@@ -81,7 +81,10 @@
             <div class="promo-box">
                 <h3>Secure your media tracking history today</h3>
                 <p>Download Episora-WatchMate, enable automatic backup, and enjoy tracking without future risks.</p>
-                <a href="YOUR_PLAYSTORE_URL" class="cta-btn">Download free on Google Play</a>
+                <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Download on Google Play Store">
+                    <img src="google-play-logo.png" alt="Google Play Store" style="height: 24px; width: auto;">
+                    <span>Available on Google Play</span>
+                </a>
             </div>
         </main>
     </div>

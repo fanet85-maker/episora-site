@@ -126,7 +126,10 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 30px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             box-sizing: border-box;
             transition: transform 0.2s;
             max-width: 100%;
@@ -446,7 +449,10 @@
         <section class="hero">
             <h1>Never lose a TV show again.<br>Take back control.</h1>
             <p>Left behind by TV Time? Switch to <strong>Episora-WatchMate</strong>: the ultimate Android app for tracking TV shows and movies without risking that your data disappears into thin air.</p>
-            <a href="#" class="cta-btn" onclick="alert('The app is currently in pre-launch and will be available soon on the Play Store!'); return false;">Available soon on the Play Store</a>
+            <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Download on Google Play Store">
+                <img src="google-play-logo.png" alt="Google Play Store" style="height: 24px; width: auto;">
+                <span>Available on Google Play</span>
+            </a>
             <a href="#" class="cta-btn" onclick="alert('The app is currently in pre-launch and will be available soon on iOS too!'); return false;">Available soon on App Store</a>
         </section>
 

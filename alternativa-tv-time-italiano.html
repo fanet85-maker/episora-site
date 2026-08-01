@@ -129,13 +129,28 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 30px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             box-sizing: border-box;
             transition: transform 0.2s;
             max-width: 100%;
         }
         .cta-btn:hover {
             transform: scale(1.05);
+        }
+        .cta-btn .play-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .cta-btn .play-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
         .cta-btn + .cta-btn {
             margin-left: 14px;
@@ -464,7 +479,10 @@
             <h1>Mai più serie TV perse.<br>Il controllo torna nelle tue mani.</h1>
             <p>Sei rimasto orfano di TV Time? Passa a <strong>Episora-WatchMate</strong>: l'app Android definitiva per tracciare serie TV e film senza il rischio che i tuoi dati svaniscano nel nulla.</p>
             <!-- Pulsante aggiornato per il pre-lancio -->
-            <a href="#" class="cta-btn" onclick="alert('L\'applicazione è in fase di pubblicazione e sarà disponibile a breve sul Play Store!'); return false;">Disponibile a breve sul Play Store</a>
+            <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Scarica su Google Play Store">
+                <img src="google-play-logo.png" alt="Google Play Store" style="height: 24px; width: auto;">
+                <span>Disponibile su Google Play</span>
+            </a>
             <a href="#" class="cta-btn" onclick="alert('L\'applicazione è in fase di pubblicazione e sarà disponibile a breve anche su iOS!'); return false;">Disponibile a breve su App Store</a>
         </section>
 

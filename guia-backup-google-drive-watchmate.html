@@ -100,12 +100,27 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 30px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             margin-top: 20px;
             transition: transform 0.2s;
         }
         .cta-btn:hover {
             transform: scale(1.05);
+        }
+        .cta-btn .play-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .cta-btn .play-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
     </style>
 </head>
@@ -160,7 +175,10 @@
             <div class="promo-box">
                 <h3>Metti al sicuro la tua cronologia multimediale</h3>
                 <p>Scarica Episora-WatchMate, attiva il backup automatico e goditi le tue serie preferite senza pensieri.</p>
-                <a href="#" class="cta-btn" onclick="alert('L\'applicazione è in fase di pubblicazione e sarà disponibile a breve sul Play Store!'); return false;">Disponibile a breve sul Play Store</a>
+                <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Scarica su Google Play Store">
+                    <img src="google-play-logo.png" alt="Google Play Store" style="height: 24px; width: auto;">
+                    <span>Disponibile su Google Play</span>
+                </a>
             </div>
         </main>
     </div>
