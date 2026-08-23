@@ -32,6 +32,27 @@
   </url>
 
   <url>
+    <loc>https://www.episora-watchmate.it/aggiornamenti-italiano.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/aggiornamenti-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/updates-english.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.episora-watchmate.it/actualizaciones-espanol.html" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/updates-english.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/aggiornamenti-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/updates-english.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.episora-watchmate.it/actualizaciones-espanol.html" />
+  </url>
+
+  <url>
+    <loc>https://www.episora-watchmate.it/actualizaciones-espanol.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/aggiornamenti-italiano.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/updates-english.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.episora-watchmate.it/actualizaciones-espanol.html" />
+  </url>
+
+  <url>
     <loc>https://www.episora-watchmate.it/come-importare-dati-tv-time-italiano.html</loc>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/come-importare-dati-tv-time-italiano.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/how-to-import-tv-time-data-android.html" />
