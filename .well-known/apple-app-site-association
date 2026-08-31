@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "BYP9NJ85XP.it.skolidspeak.episorawatchmate"
+        ],
+        "components": [
+          {
+            "/": "/share/",
+            "comment": "Episora shared content landing page"
+          },
+          {
+            "/": "/share/*",
+            "comment": "Episora shared content paths"
+          }
+        ]
+      }
+    ]
+  }
+}

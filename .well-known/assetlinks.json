@@ -1,0 +1,15 @@
+
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "it.skolidspeak.episorawatchmate",
+      "sha256_cert_fingerprints": [
+        "88:0D:49:ED:0D:CF:54:9C:11:0A:28:24:85:4C:6D:06:CB:C4:FD:43:95:29:CD:1C:48:6C:FE:73:0A:98:D2:AA"
+      ]
+    }
+  }
+]

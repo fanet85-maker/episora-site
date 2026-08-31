@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Apri con Episora-WatchMate</title>
+  <meta name="description" content="Apri il contenuto condiviso con Episora-WatchMate.">
+
+  <!-- Generic social preview for V1. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Episora-WatchMate">
+  <meta property="og:title" content="Contenuto condiviso su Episora-WatchMate">
+  <meta property="og:description" content="Apri questo contenuto con Episora-WatchMate.">
+  <meta property="og:url" content="https://www.episora-watchmate.it/share/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Contenuto condiviso su Episora-WatchMate">
+  <meta name="twitter:description" content="Apri questo contenuto con Episora-WatchMate.">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f111a;
+      --card: #171b28;
+      --text: #f4f7fb;
+      --muted: #aeb7c8;
+      --accent: #48bb78;
+      --border: rgba(255,255,255,.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(72,187,120,.18), transparent 38rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    main {
+      width: min(100%, 560px);
+      background: rgba(23,27,40,.94);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.35);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--accent);
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 7vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+
+    .content-info {
+      display: none;
+      margin: 22px 0;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    a.button {
+      display: block;
+      padding: 14px 18px;
+      text-align: center;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+
+    a.button:hover { transform: translateY(-1px); }
+    a.button:active { transform: translateY(0); }
+
+    .primary {
+      background: var(--accent);
+      color: #0b1410;
+    }
+
+    .secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,.035);
+    }
+
+    .home-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .home-link:hover { color: var(--text); }
+
+    .note {
+      margin-top: 22px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="brand">
+      <span class="mark">E</span>
+      <span>Episora-WatchMate</span>
+    </div>
+
+    <h1>Apri questo contenuto con Episora</h1>
+
+    <p>
+      Se Episora-WatchMate è installata, i link condivisi compatibili possono
+      aprire direttamente la relativa serie, film o episodio nell'app.
+    </p>
+
+    <div id="contentInfo" class="content-info" aria-live="polite"></div>
+
+    <div class="actions">
+      <a
+        class="button primary"
+        href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate"
+        rel="noopener noreferrer">
+        Scarica da Google Play
+      </a>
+
+      <a
+        class="button secondary"
+        href="https://apps.apple.com/app/id6793169791"
+        rel="noopener noreferrer">
+        Scarica da App Store
+      </a>
+    </div>
+
+    <p class="note">
+      Episora-WatchMate non è un servizio di streaming. Il contenuto condiviso
+      viene identificato dal link e risolto dall'app tramite i provider supportati.
+    </p>
+
+    <a class="home-link" href="https://www.episora-watchmate.it/">
+      Vai al sito Episora-WatchMate
+    </a>
+  </main>
+
+  <script>
+    (() => {
+      const allowedTypes = new Set(["series", "movie", "episode"]);
+      const allowedProviders = new Set(["tvdb"]);
+
+      const params = new URLSearchParams(window.location.search);
+      const type = (params.get("type") || "").toLowerCase();
+      const provider = (params.get("provider") || "").toLowerCase();
+      const id = (params.get("id") || "").trim();
+
+      const validId = /^[A-Za-z0-9_-]{1,64}$/.test(id);
+      const valid =
+        allowedTypes.has(type) &&
+        allowedProviders.has(provider) &&
+        validId;
+
+      if (!valid) return;
+
+      const labels = {
+        series: "Serie TV",
+        movie: "Film",
+        episode: "Episodio"
+      };
+
+      const info = document.getElementById("contentInfo");
+      info.style.display = "block";
+      info.textContent =
+        `${labels[type]} condiviso · provider ${provider.toUpperCase()} · ID ${id}`;
+    })();
+  </script>
+</body>
+</html>
