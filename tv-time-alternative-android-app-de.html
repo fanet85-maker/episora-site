@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S4NKE4QN1J');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV-Show-Tracker-App: Serien und Filme verwalten | Episora-WatchMate</title>
+    <meta name="description" content="Verwalte Serien und Filme, markiere gesehene Folgen und finde Episode-Details mit Episora-WatchMate. Eine TV-Time-Alternative mit sicherem Import und Backup.">
+    <link rel="canonical" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-de.html" />
+    <link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/alternativa-tv-time-italiano.html" />
+    <link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/tv-time-alternative-android-app.html" />
+    <link rel="alternate" hreflang="es" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-es.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-fr.html" />
+    <link rel="alternate" hreflang="ru" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-ru.html" />
+    <link rel="alternate" hreflang="de" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-de.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.episora-watchmate.it/tv-time-alternative-android-app.html" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TV-Show-Tracker-App: Serien und Filme verwalten | Episora-WatchMate">
+    <meta property="og:description" content="Verwalte Serien und Filme, markiere gesehene Folgen und finde Episode-Details mit Episora-WatchMate.">
+    <meta property="og:url" content="https://www.episora-watchmate.it/tv-time-alternative-android-app-de.html">
+    <meta property="og:site_name" content="Episora-WatchMate">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Episora-WatchMate",
+            "applicationCategory": "EntertainmentApplication",
+            "operatingSystem": "Android, iOS",
+            "description": "App zum Verfolgen von Serien und Filmen, mit Verlauf, Episodeninfos und persönlichen Statistiken.",
+            "url": "https://www.episora-watchmate.it/tv-time-alternative-android-app-de.html",
+            "downloadUrl": "https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate",
+            "featureList": ["Serienverfolgung", "Gesehene Folgen", "Episodeninfos", "Watchlist", "Sehstatistiken", "Erfolge"]
+        }
+    </script>
+    <style>
+        :root {
+            --bg-color: #0f111a;
+            --card-bg: #1a1d2e;
+            --accent-color: #7c3aed;
+            --text-color: #ffffff;
+            --text-muted: #a0aec0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            background: #0b0d14;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 30px;
+            font-size: 14px;
+            border-bottom: 1px solid #161926;
+        }
+        .top-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .top-bar a:hover {
+            color: var(--accent-color);
+        }
+        .top-bar .contact-link {
+            color: var(--text-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-bar .contact-link:hover {
+            color: var(--accent-color);
+        }
+        .top-bar .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .top-bar .social-link {
+            color: var(--accent-color);
+            font-size: 18px;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .top-bar .social-link:hover {
+            color: #b78cff;
+        }
+        .top-bar .social-link svg {
+            display: block;
+        }
+        .top-bar .lang-group a {
+            margin-left: 15px;
+        }
+        .top-bar .lang-group a.active {
+            color: var(--accent-color);
+            pointer-events: none;
+        }
+
+        @media (max-width: 480px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+                padding: 12px 15px;
+            }
+            .top-bar .lang-group {
+                margin-top: 4px;
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero {
+            text-align: center;
+            padding: 8px 20px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-sizing: border-box;
+            transition: transform 0.2s;
+            max-width: 100%;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+        .cta-btn + .cta-btn {
+            margin-left: 14px;
+        }
+        @media (max-width: 768px) {
+            .hero .cta-btn {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                margin: 10px auto 0;
+            }
+            .cta-btn + .cta-btn {
+                margin-left: 0;
+            }
+        }
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
+        .screenshot-container {
+            text-align: center;
+        }
+        .phone-mockup {
+            width: min(380px, 100%);
+            margin: 0 auto;
+            padding: 18px 16px 14px;
+            background: #0b0d14;
+            border: 4px solid #2d3748;
+            border-radius: 46px;
+            box-shadow: 0 24px 50px rgba(0,0,0,0.55);
+            position: relative;
+        }
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 54px;
+            height: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 999px;
+        }
+        .phone-screen {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 30px;
+            background: #020206;
+            aspect-ratio: 9 / 20;
+            max-height: 760px;
+        }
+        .carousel-track {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .features {
+            max-width: 500px;
+        }
+        .features h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        .feature-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 18px 20px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+        }
+        .feature-item h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+        }
+        .feature-item p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+        .app-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        @media (max-width: 900px) {
+            .app-features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 600px) {
+            .app-features-grid { grid-template-columns: 1fr; }
+        }
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid #2d3748;
+            border-radius: 18px;
+            padding: 20px;
+            text-align: center;
+        }
+        .feature-card h3 {
+            margin: 16px 0 10px;
+            font-size: 1.2rem;
+        }
+        .feature-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.96rem;
+        }
+        .feature-icon {
+            display: block;
+            margin: 0 auto;
+            width: 72px;
+            height: 72px;
+        }
+        .guides-section {
+            margin-top: 80px;
+        }
+        .guides-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+        @media (max-width: 720px) {
+            .guides-grid { grid-template-columns: 1fr; }
+        }
+        .guide-card {
+            display: block;
+            text-decoration: none;
+            background: var(--card-bg);
+            border: 1px solid #2d3748;
+            border-radius: 16px;
+            padding: 22px 20px;
+            color: var(--text-color);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .guide-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+        .guide-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+        .guide-card p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+        .faq-section {
+            margin-top: 80px;
+        }
+        .faq-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .faq-item {
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            background: var(--card-bg);
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            padding: 18px 20px;
+            list-style: none;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-content {
+            padding: 0 20px 20px;
+            color: var(--text-muted);
+        }
+        .faq-content a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            word-break: break-word;
+        }
+        .faq-content a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid #1a1d2e;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="https://www.instagram.com/episora.app?igsh=MXV4OGlqY2E1c2FlNg==" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8" fill="none"></rect>
+                    <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8" fill="none"></circle>
+                    <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"></circle>
+                </svg>
+            </a>
+            <a href="contact-support-german.html" class="contact-link">💬 Kontakt &amp; Support</a>
+            <a href="updates-german.html">✨ Neuigkeiten</a>
+        </div>
+        <div class="lang-group">
+            <a href="tv-time-alternative-android-app.html">EN</a>
+            <a href="tv-time-alternative-android-app-fr.html">FR</a>
+            <a href="tv-time-alternative-android-app-ru.html">RU</a>
+            <a href="tv-time-alternative-android-app-de.html" class="active">DE</a>
+            <a href="tv-time-alternative-android-app-es.html">ES</a>
+            <a href="alternativa-tv-time-italiano.html">IT</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Verlier nie wieder eine Serie.<br>Übernimm die Kontrolle.</h1>
+            <p>Von TV Time enttäuscht? Wechseln Sie zu <strong>Episora-WatchMate</strong>: der ultimativen Android- und iOS-App zum Verfolgen von Serien und Filmen, ohne das Risiko, dass deine Daten plötzlich verschwinden.</p>
+            <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Im Google Play Store herunterladen">
+                <img src="google-play-logo.png" alt="Google Play Store" style="height: 24px; width: auto;">
+                <span>Verfügbar im Google Play Store</span>
+            </a>
+            <a href="https://apps.apple.com/it/app/episora-watchmate/id6793169791" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Im App Store herunterladen">
+                <img src="app-store-logo.png" alt="App Store" style="height: 24px; width: auto;">
+                <span>Verfügbar im App Store</span>
+            </a>
+        </section>
+
+        <div class="main-layout">
+            <div class="screenshot-container">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-en.jpg" alt="Startseite der Episora-WatchMate-App"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-cerca-en.jpg" alt="Suchansicht von Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-serie-en.jpg" alt="Serienansicht von Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo-en.jpg" alt="Profilansicht von Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo2-en.jpg" alt="Profilansicht von Episora-WatchMate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <h2>Warum WatchMate?</h2>
+                
+                <div class="feature-item">
+                    <h3>Deine Daten gehören dir, für immer</h3>
+                    <p>Verlass dich nicht auf externe Cloud-Server, die eines Tages verschwinden könnten. Mit Episora-WatchMate behältst du deinen gesamten Wiedergabeverlauf lokal auf deinem Smartphone.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Sicheres Backup auf Google Drive</h3>
+                    <p>Kein Risiko, deinen Fortschritt zu verlieren, wenn du das Handy wechselst. Die App erstellt Backups in deinem persönlichen Google Drive.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Migration von TV Time</h3>
+                    <p>Du musst nicht von vorne anfangen. Importiere den kompletten Verlauf deiner gesehenen Inhalte aus TV Time in wenigen Minuten und setze deine Verfolgung fort.</p>
+                </div>
+            </div>
+        </div>
+
+        <section style="margin-top: 80px;">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 10px;">Was du mit Episora-WatchMate machen kannst</h2>
+            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto;">Alle wichtigen Tools, um deine tägliche Mediennutzung privat und unkompliziert zu organisieren.</p>
+            
+            <div class="app-features-grid">
+                <div class="feature-card">
+                    <img class="feature-icon" src="sora_feature_search_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Suche nach Serien und Filmen">
+                    <h3>Suche und Detailinfos</h3>
+                    <p>Finde schnell jede Serie oder jeden Film. Zugriff auf Episodeninformationen, Zusammenfassungen und genaue Laufzeiten.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img class="feature-icon" src="sora_feature_library_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Bibliothek verwalten">
+                    <h3>Bibliothek verwalten</h3>
+                    <p>Füge deine Lieblingsserien zur Bibliothek hinzu und behalte ein genaues Protokoll der bereits gesehenen Episoden.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img class="feature-icon" src="sora_feature_watchlist_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Watchlist verwalten">
+                    <h3>Watchlist</h3>
+                    <p>Organisiere eine eigene Watchlist mit allen Serien und Filmen, die du später ansehen möchtest.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img class="feature-icon" src="sora_feature_stats_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Sehstatistiken">
+                    <h3>Sehstatistiken</h3>
+                    <p>Erhalte eine kompakte Übersicht über deinen Fortschritt, inklusive Minuten und Tage, die du mit Serien und Filmen verbracht hast.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img class="feature-icon" src="sora_feature_rewatch_256.webp" width="72" height="72" loading="lazy" decoding="async" alt="Neuansehen und Verlauf">
+                    <h3>Neuansehen &amp; Verlauf</h3>
+                    <p>Schau dir Serien erneut an und behalte den Überblick, damit du jederzeit weiter machen kannst, ohne den Faden zu verlieren.</p>
+                </div>
+
+                <div class="feature-card">
+                    <img class="feature-icon" src="sora_feature_achievement.webp" width="72" height="72" loading="lazy" decoding="async" alt="Erfolge">
+                    <h3>Erfolge</h3>
+                    <p>Erreiche neue Meilensteine beim Anschauen von Serien und Filmen und entdecke die Errungenschaften, die du freigeschaltet hast.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guides-section">
+            <h2>Hilfreiche Anleitungen &amp; Support</h2>
+            <div class="guides-grid">
+                <a href="how-to-import-tv-time-data-android.html" class="guide-card">
+                    <h3>📖 TV-Time-Daten importieren</h3>
+                    <p>TV Time hinter dir gelassen? Erfahre, wie du deinen kompletten Serien- und Filmdatenbestand in wenigen Minuten nach Episora-WatchMate überträgst.</p>
+                </a>
+                
+                <a href="how-to-backup-android-tv-tracker-google-drive.html" class="guide-card">
+                    <h3>💾 Google-Drive-Backup einrichten</h3>
+                    <p>Schütze deine Medienbibliothek lokal und erstelle eine automatische Sicherungskopie in deinem privaten Google Drive.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2>Häufig gestellte Fragen (FAQ)</h2>
+            
+            <details class="faq-item" name="faq">
+                <summary>Ist Episora-WatchMate kostenlos?</summary>
+                <div class="faq-content">
+                    <p>Ja, die Kernfunktionen und das persönliche Backup sind komplett kostenlos. In Zukunft könnten optionale kostenpflichtige Funktionen oder Werbeformen ergänzt werden.</p>
+                </div>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary>Kann ich meinen Verlauf wirklich von TV Time wiederherstellen?</summary>
+                <div class="faq-content">
+                    <p>Ja, absolut. Du kannst deinen Export direkt von TV Time erhalten und anschließend im Import-Guide in Episora-WatchMate hochladen.</p>
+                </div>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary>Was passiert beim Wechsel auf ein neues Handy?</summary>
+                <div class="faq-content">
+                    <p>Dank der Synchronisierung mit deinem Google Drive kannst du Episora-WatchMate auf dem neuen Gerät installieren und das Backup sofort wiederherstellen.</p>
+                </div>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary>Sind meine Daten sicher? Wer kann sehen, was ich gucke?</summary>
+                <div class="faq-content">
+                    <p>Nur du. Im Gegensatz zu anderen Plattformen laden wir deinen Verlauf nicht in eine zentrale Datenbank hoch. Deine Daten bleiben auf deinem Smartphone und in deinem eigenen Google Drive.</p>
+                </div>
+            </details>
+
+            <details class="faq-item" name="faq">
+                <summary>Kann ich die App offline nutzen?</summary>
+                <div class="faq-content">
+                    <p>Ja! Sobald die Bibliothek einmal synchronisiert wurde, kannst du Episoden als gesehen markieren oder deine Liste auch ohne Internet nutzen. Die App synchronisiert das Backup entsprechend deinem Zeitplan.</p>
+                </div>
+            </details>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Episora-WatchMate. Alle Rechte vorbehalten. Mit Liebe für echte Serienfans gebaut.</p>
+        <p style="margin-top: 15px;">
+            <a href="privacy-policy-german.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-muted)'">Datenschutz</a> | 
+            <a href="credits-german.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-muted)'">Credits</a> | 
+            <a href="contact-support-german.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-muted)'">Kontakt &amp; Support</a>
+        </p>
+    </footer>
+
+</body>
+</html>

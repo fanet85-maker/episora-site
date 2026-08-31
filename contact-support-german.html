@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
@@ -12,8 +12,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.episora-watchmate.it/contacto-soporte-espanol.html" />
-    <title>Contacto y Soporte - Episora-WatchMate</title>
+    <link rel="canonical" href="https://www.episora-watchmate.it/contact-support-german.html" />
+    <title>Kontakt &amp; Support - Episora-WatchMate</title>
     <style>
         :root {
             --bg-color: #0f111a;
@@ -183,57 +183,57 @@
 <body>
 
     <div class="lang-selector">
-        <a href="contact-support-english.html">EN</a>
-        <a href="contact-support-french.html">FR</a>
-        <a href="contact-support-russian.html">RU</a>
-        <a href="contact-support-german.html">DE</a>
-        <a href="contacto-soporte-espanol.html" class="active">ES</a>
-        <a href="contatti-assistenza-italiano.html">IT</a>
+        <a href="tv-time-alternative-android-app.html">EN</a>
+        <a href="tv-time-alternative-android-app-fr.html">FR</a>
+        <a href="tv-time-alternative-android-app-ru.html">RU</a>
+        <a href="tv-time-alternative-android-app-de.html">DE</a>
+        <a href="tv-time-alternative-android-app-es.html">ES</a>
+        <a href="alternativa-tv-time-italiano.html">IT</a>
     </div>
 
     <div class="container">
-        <a href="tv-time-alternative-android-app-es.html" class="back-link">← Volver a Inicio</a>
+        <a href="tv-time-alternative-android-app-de.html" class="back-link">&larr; Zurück zur Startseite</a>
         
-        <h1>Contacto y Soporte</h1>
-        <p>¿Tienes una pregunta, encontraste un problema técnico o quieres compartir una sugerencia para mejorar Episora-WatchMate? Estamos aquí para escucharte.</p>
+        <h1>Kontakt &amp; Support</h1>
+        <p>Hast du eine Frage, ein technisches Problem entdeckt oder möchtest du eine Idee teilen, um Episora-WatchMate zu verbessern? Wir hören dir zu.</p>
 
         <div class="notice-box">
-            <h3>📢 Aviso importante</h3>
-            <p><strong>Lanzamiento:</strong> La aplicación ya está disponible en Android e iOS. Si tienes dudas, problemas o sugerencias, ¡escríbenos! Gracias si la has probado.</p>
+            <h3>📢 Wichtiger Hinweis</h3>
+            <p><strong>Veröffentlichung:</strong> Die App ist für Android und iOS verfügbar. Wenn du Zweifel, Probleme oder Vorschläge hast, schreib uns einfach! Vielen Dank, dass du sie ausprobiert hast.</p>
         </div>
 
         <div class="contact-form-container">
-            <h2>Enviar una consulta</h2>
+            <h2>Anfrage senden</h2>
             <form id="contact-form">
                 <div class="form-group">
-                    <label for="name">Tu nombre</label>
-                    <input type="text" id="name" name="user_name" placeholder="Ingresa tu nombre" required>
+                    <label for="name">Dein Name</label>
+                    <input type="text" id="name" name="user_name" placeholder="Gib deinen Namen ein" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="user_email" placeholder="nombre@ejemplo.com" required>
+                    <label for="email">E-Mail-Adresse</label>
+                    <input type="email" id="email" name="user_email" placeholder="name@example.com" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="subject">Asunto</label>
-                    <input type="text" id="subject" name="subject" placeholder="Ej. Problema de importación, Sugerencia..." required>
+                    <label for="subject">Betreff</label>
+                    <input type="text" id="subject" name="subject" placeholder="z. B. Importproblem, Funktionsvorschlag..." required>
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Mensaje / Consulta</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Escribe los detalles de tu consulta aquí..." required></textarea>
+                    <label for="message">Nachricht / Anfrage</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Beschreibe hier deine Anfrage..." required></textarea>
                 </div>
 
                 <div id="form-status" class="form-status"></div>
 
-                <button type="submit" class="submit-btn">Enviar mensaje</button>
+                <button type="submit" class="submit-btn">Nachricht senden</button>
             </form>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Episora-WatchMate. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Episora-WatchMate. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script>
@@ -243,7 +243,7 @@
             const btn = document.querySelector('.submit-btn');
             const statusDiv = document.getElementById('form-status');
 
-            btn.textContent = 'Enviando...';
+            btn.textContent = 'Senden...';
             btn.disabled = true;
             statusDiv.className = 'form-status';
             statusDiv.style.display = 'none';
@@ -253,26 +253,23 @@
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    btn.textContent = 'Enviar mensaje';
+                    btn.textContent = 'Nachricht senden';
                     btn.disabled = false;
 
-                    statusDiv.textContent = '¡Gracias! Tu mensaje ha sido enviado con éxito. Respondremos lo antes posible.';
+                    statusDiv.textContent = 'Danke! Deine Nachricht wurde erfolgreich gesendet. Wir antworten dir so schnell wie möglich.';
                     statusDiv.className = 'form-status success';
                     statusDiv.style.display = 'block';
-
-                    document.getElementById('contact-form').reset();
-                }, (error) => {
-                    btn.textContent = 'Enviar mensaje';
+                    this.reset();
+                })
+                .catch(() => {
+                    btn.textContent = 'Nachricht senden';
                     btn.disabled = false;
 
-                    statusDiv.textContent = '¡Vaya! Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde o contáctanos directamente.';
+                    statusDiv.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut oder schick uns eine E-Mail an support@episora-watchmate.it.';
                     statusDiv.className = 'form-status error';
                     statusDiv.style.display = 'block';
-
-                    console.error('EmailJS detailed error:', error);
                 });
         });
     </script>
 </body>
 </html>
-
