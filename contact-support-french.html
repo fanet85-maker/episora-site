@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
@@ -12,8 +12,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.episora-watchmate.it/contacto-soporte-espanol.html" />
-    <title>Contacto y Soporte - Episora-WatchMate</title>
+    <link rel="canonical" href="https://www.episora-watchmate.it/contact-support-french.html" />
+    <title>Contact &amp; Assistance - Episora-WatchMate</title>
     <style>
         :root {
             --bg-color: #0f111a;
@@ -183,94 +183,92 @@
 <body>
 
     <div class="lang-selector">
-        <a href="contact-support-english.html">EN</a>
-        <a href="contact-support-french.html">FR</a>
-        <a href="contacto-soporte-espanol.html" class="active">ES</a>
-        <a href="contatti-assistenza-italiano.html">IT</a>
+        <a href="tv-time-alternative-android-app.html">EN</a>
+        <a href="tv-time-alternative-android-app-fr.html">FR</a>
+        <a href="tv-time-alternative-android-app-es.html">ES</a>
+        <a href="alternativa-tv-time-italiano.html">IT</a>
     </div>
 
     <div class="container">
-        <a href="tv-time-alternative-android-app-es.html" class="back-link">← Volver a Inicio</a>
-        
-        <h1>Contacto y Soporte</h1>
-        <p>¿Tienes una pregunta, encontraste un problema técnico o quieres compartir una sugerencia para mejorar Episora-WatchMate? Estamos aquí para escucharte.</p>
+        <a href="tv-time-alternative-android-app-fr.html" class="back-link">&larr; Retour à l'accueil</a>
+
+        <h1>Contact &amp; Assistance</h1>
+        <p>Vous avez une question, vous avez trouvé un bug technique ou vous souhaitez partager une idée pour améliorer Episora-WatchMate ? Nous sommes là pour vous écouter.</p>
 
         <div class="notice-box">
-            <h3>📢 Aviso importante</h3>
-            <p><strong>Lanzamiento:</strong> La aplicación ya está disponible en Android e iOS. Si tienes dudas, problemas o sugerencias, ¡escríbenos! Gracias si la has probado.</p>
+            <h3>📢 Avis important</h3>
+            <p><strong>Sortie :</strong> L'application est disponible sur Android et iOS. Si vous avez des doutes, des problèmes ou des suggestions, écrivez-nous ! Merci d'avoir essayé l'application.</p>
         </div>
 
         <div class="contact-form-container">
-            <h2>Enviar una consulta</h2>
+            <h2>Envoyer une demande</h2>
             <form id="contact-form">
                 <div class="form-group">
-                    <label for="name">Tu nombre</label>
-                    <input type="text" id="name" name="user_name" placeholder="Ingresa tu nombre" required>
+                    <label for="name">Votre nom</label>
+                    <input type="text" id="name" name="user_name" placeholder="Entrez votre nom" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="user_email" placeholder="nombre@ejemplo.com" required>
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" name="user_email" placeholder="nom@example.com" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="subject">Asunto</label>
-                    <input type="text" id="subject" name="subject" placeholder="Ej. Problema de importación, Sugerencia..." required>
+                    <label for="subject">Objet</label>
+                    <input type="text" id="subject" name="subject" placeholder="Ex. : problème d'import, suggestion de fonctionnalité..." required>
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Mensaje / Consulta</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Escribe los detalles de tu consulta aquí..." required></textarea>
+                    <label for="message">Message / Demande</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Décrivez votre demande ici..." required></textarea>
                 </div>
 
                 <div id="form-status" class="form-status"></div>
 
-                <button type="submit" class="submit-btn">Enviar mensaje</button>
+                <button type="submit" class="submit-btn">Envoyer le message</button>
             </form>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Episora-WatchMate. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Episora-WatchMate. Tous droits réservés.</p>
     </footer>
 
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const btn = document.querySelector('.submit-btn');
-            const statusDiv = document.getElementById('form-status');
+            const form = event.currentTarget;
+            const formStatus = document.getElementById('form-status');
+            const submitButton = form.querySelector('.submit-btn');
 
-            btn.textContent = 'Enviando...';
-            btn.disabled = true;
-            statusDiv.className = 'form-status';
-            statusDiv.style.display = 'none';
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
 
-            const serviceID = 'Aruba';
-            const templateID = 'template_d4o84fw';
+            const templateParams = {
+                user_name: form.user_name.value,
+                user_email: form.user_email.value,
+                subject: form.subject.value,
+                message: form.message.value
+            };
 
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    btn.textContent = 'Enviar mensaje';
-                    btn.disabled = false;
-
-                    statusDiv.textContent = '¡Gracias! Tu mensaje ha sido enviado con éxito. Respondremos lo antes posible.';
-                    statusDiv.className = 'form-status success';
-                    statusDiv.style.display = 'block';
-
-                    document.getElementById('contact-form').reset();
-                }, (error) => {
-                    btn.textContent = 'Enviar mensaje';
-                    btn.disabled = false;
-
-                    statusDiv.textContent = '¡Vaya! Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde o contáctanos directamente.';
-                    statusDiv.className = 'form-status error';
-                    statusDiv.style.display = 'block';
-
-                    console.error('EmailJS detailed error:', error);
+            emailjs.send('service_7g64j6r', 'template_4w1v8ei', templateParams)
+                .then(function() {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = 'Votre message a bien été envoyé. Nous vous répondrons prochainement.';
+                    form.reset();
+                })
+                .catch(function(error) {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Une erreur est survenue lors de l\'envoi. Réessayez ou contactez-nous directement par e-mail.' + (error && error.text ? ' Détails: ' + error.text : '');
+                })
+                .finally(function() {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer le message';
                 });
         });
     </script>
 </body>
 </html>
-
