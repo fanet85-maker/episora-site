@@ -1,14 +1,15 @@
-
 [
   {
     "relation": [
-      "delegate_permission/common.handle_all_urls"
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
     ],
     "target": {
       "namespace": "android_app",
       "package_name": "it.skolidspeak.episorawatchmate",
       "sha256_cert_fingerprints": [
-        "88:0D:49:ED:0D:CF:54:9C:11:0A:28:24:85:4C:6D:06:CB:C4:FD:43:95:29:CD:1C:48:6C:FE:73:0A:98:D2:AA"
+        "88:0D:49:ED:0D:CF:54:9C:11:0A:28:24:85:4C:6D:06:CB:C4:FD:43:95:29:CD:1C:48:6C:FE:73:0A:98:D2:AA",
+        "E2:C8:A3:F4:46:6F:29:BD:7A:72:70:9A:17:20:36:20:98:B0:10:B3:12:64:5B:9F:17:8A:7B:4E:2E:1F:06:23"
       ]
     }
   }
