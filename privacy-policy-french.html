@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
+        <!-- Google tag (gtag.js) with Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      const savedConsent = localStorage.getItem('episora_cookie_consent');
+      gtag('consent', 'default', {
+        'analytics_storage': savedConsent === 'granted' ? 'granted' : 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
       gtag('js', new Date());
-
-      gtag('config', 'G-S4NKE4QN1J');
+      gtag('config', 'G-S4NKE4QN1J', { 'anonymize_ip': true });
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.episora-watchmate.it/privacy-policy-french.html" />
@@ -136,5 +142,85 @@
         <p>&copy; 2026 Episora-WatchMate. Tous droits réservés.</p>
     </footer>
 
+<style>
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 640px);
+    background: rgba(18, 21, 32, 0.96);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    z-index: 10000;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+.cookie-content p { margin: 0 0 12px; color: #cbd5e1; }
+.cookie-content a { color: #b78cff; text-decoration: underline; font-weight: 600; }
+.cookie-content a:hover { color: #ffffff; }
+.cookie-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.cookie-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: inherit;
+}
+.cookie-btn.primary { background: #7c3aed; color: #ffffff; }
+.cookie-btn.primary:hover { background: #6d28d9; transform: translateY(-1px); }
+.cookie-btn.secondary { background: rgba(255, 255, 255, 0.08); color: #cbd5e1; }
+.cookie-btn.secondary:hover { background: rgba(255, 255, 255, 0.16); color: #ffffff; }
+@media (max-width: 480px) {
+    .cookie-banner { bottom: 10px; padding: 14px 16px; width: 94%; }
+    .cookie-actions { flex-direction: column-reverse; }
+    .cookie-btn { width: 100%; text-align: center; }
+}
+</style>
+<div id="cookieBanner" class="cookie-banner" style="display:none;" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div class="cookie-content">
+        <p>Ce site utilise des cookies techniques et, avec votre consentement, des cookies analytiques anonymisés (Google Analytics) pour améliorer l'expérience. <a href="privacy-policy-french.html" target="_blank">Politique de confidentialité</a>.</p>
+        <div class="cookie-actions">
+            <button id="cookieReject" class="cookie-btn secondary">Nécessaires uniquement</button>
+            <button id="cookieAccept" class="cookie-btn primary">Tout accepter</button>
+        </div>
+    </div>
+</div>
+<script>
+    (function() {
+        const consent = localStorage.getItem('episora_cookie_consent');
+        const banner = document.getElementById('cookieBanner');
+        if (!consent && banner) {
+            banner.style.display = 'block';
+        }
+        const btnAccept = document.getElementById('cookieAccept');
+        const btnReject = document.getElementById('cookieReject');
+        if (btnAccept) {
+            btnAccept.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'granted');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+        if (btnReject) {
+            btnReject.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'denied');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'denied' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+    })();
+</script>
 </body>
 </html>

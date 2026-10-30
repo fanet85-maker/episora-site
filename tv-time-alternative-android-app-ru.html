@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
+        <!-- Google tag (gtag.js) with Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      const savedConsent = localStorage.getItem('episora_cookie_consent');
+      gtag('consent', 'default', {
+        'analytics_storage': savedConsent === 'granted' ? 'granted' : 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
       gtag('js', new Date());
-
-      gtag('config', 'G-S4NKE4QN1J');
+      gtag('config', 'G-S4NKE4QN1J', { 'anonymize_ip': true });
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отслеживание сериалов: держите всё под контролем | Episora-WatchMate</title>
@@ -18,26 +24,46 @@
     <link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/alternativa-tv-time-italiano.html" />
     <link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/tv-time-alternative-android-app.html" />
     <link rel="alternate" hreflang="es" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-es.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-fr.html" />
     <link rel="alternate" hreflang="ru" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-ru.html" />
+    <link rel="alternate" hreflang="de" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-de.html" />
     <link rel="alternate" hreflang="x-default" href="https://www.episora-watchmate.it/tv-time-alternative-android-app.html" />
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Отслеживание сериалов: держите всё под контролем | Episora-WatchMate">
-    <meta property="og:description" content="Отслеживайте сериалы, отмечайте просмотренные эпизоды и смотрите детали о них с Episora-WatchMate.">
-    <meta property="og:url" content="https://www.episora-watchmate.it/tv-time-alternative-android-app-ru.html">
-    <meta property="og:site_name" content="Episora-WatchMate">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Отслеживание сериалов: держите всё под контролем | Episora-WatchMate">
+        <meta property="og:description" content="Отслеживайте сериалы, отмечайте просмотренные эпизоды и смотрите детали о них с Episora-WatchMate. Альтернатива TV Time с надежным импортом и бэкапом.">
+        <meta property="og:url" content="https://www.episora-watchmate.it/tv-time-alternative-android-app-ru.html">
+        <meta property="og:site_name" content="Episora-WatchMate">
+        <meta property="og:image" content="https://www.episora-watchmate.it/og-preview.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Отслеживание сериалов: держите всё под контролем | Episora-WatchMate">
+        <meta name="twitter:description" content="Отслеживайте сериалы, отмечайте просмотренные эпизоды и смотрите детали о них с Episora-WatchMate. Альтернатива TV Time с надежным импортом и бэкапом.">
+        <meta name="twitter:image" content="https://www.episora-watchmate.it/og-preview.jpg">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Episora-WatchMate",
-        "applicationCategory": "EntertainmentApplication",
-        "operatingSystem": "Android, iOS",
-        "description": "Приложение для отслеживания сериалов и фильмов с контролем просмотренных серий и метаданными.",
-        "url": "https://www.episora-watchmate.it/tv-time-alternative-android-app-ru.html",
-        "downloadUrl": "https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate",
-        "featureList": ["Отслеживание сериалов", "Просмотренные эпизоды", "Информация об эпизодах", "Список к просмотру", "Статистика просмотра", "Достижения"]
-    }
-    </script>
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Episora-WatchMate",
+            "applicationCategory": "EntertainmentApplication",
+            "operatingSystem": "Android, iOS",
+            "description": "Отслеживайте сериалы, отмечайте просмотренные эпизоды и смотрите детали о них с Episora-WatchMate. Альтернатива TV Time с надежным импортом и бэкапом.",
+            "url": "https://www.episora-watchmate.it/tv-time-alternative-android-app-ru.html",
+            "image": "https://www.episora-watchmate.it/og-preview.jpg",
+            "screenshot": "https://www.episora-watchmate.it/episora-watchmate-interfaccia-en.jpg",
+            "downloadUrl": "https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate",
+            "installUrl": [
+                "https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate",
+                "https://apps.apple.com/it/app/episora-watchmate/id6793169791"
+            ],
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR"
+            },
+            "featureList": ["Отслеживание сериалов", "Просмотренные эпизоды", "Информация об эпизодах", "Список к просмотру", "Статистика просмотра", "Достижения"]
+        }
+        </script>
     <style>
         :root {
             --bg-color: #0f111a;
@@ -489,11 +515,11 @@
                 <div class="phone-mockup">
                     <div class="phone-screen">
                         <div class="carousel-track">
-                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-en.jpg" alt="Главный экран Episora-WatchMate"></div>
-                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-cerca-en.jpg" alt="Экран поиска Episora-WatchMate"></div>
-                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-serie-en.jpg" alt="Экран сериалов Episora-WatchMate"></div>
-                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo-en.jpg" alt="Экран профиля Episora-WatchMate"></div>
-                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo2-en.jpg" alt="Второй экран профиля Episora-WatchMate"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-en.jpg" alt="Главный экран Episora-WatchMate" loading="eager" decoding="async"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-cerca-en.jpg" alt="Экран поиска Episora-WatchMate" loading="lazy" decoding="async"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-serie-en.jpg" alt="Экран сериалов Episora-WatchMate" loading="lazy" decoding="async"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo-en.jpg" alt="Экран профиля Episora-WatchMate" loading="lazy" decoding="async"></div>
+                            <div class="carousel-slide"><img src="episora-watchmate-interfaccia-profilo2-en.jpg" alt="Второй экран профиля Episora-WatchMate" loading="lazy" decoding="async"></div>
                         </div>
                     </div>
                 </div>
@@ -565,12 +591,12 @@
         <section class="guides-section">
             <h2>Полезные руководства и поддержка</h2>
             <div class="guides-grid">
-                <a href="how-to-import-tv-time-data-android.html" class="guide-card">
+                <a href="kak-importirovat-dannye-tv-time-android.html" class="guide-card">
                     <h3>📖 Как импортировать данные TV Time</h3>
                     <p>Уходите от TV Time? Узнайте, как перенести всю историю фильмов и сериалов в Episora-WatchMate за несколько минут.</p>
                 </a>
 
-                <a href="how-to-backup-android-tv-tracker-google-drive.html" class="guide-card">
+                <a href="kak-nastroit-rezervnoe-kopirovanie-google-drive.html" class="guide-card">
                     <h3>💾 Настройка резервного копирования в Google Drive</h3>
                     <p>Храните вашу локальную библиотеку в безопасности и создавайте автоматические резервные копии в личном Google Drive.</p>
                 </a>
@@ -590,7 +616,7 @@
             <details class="faq-item" name="faq">
                 <summary>Можно ли действительно восстановить историю из TV Time?</summary>
                 <div class="faq-content">
-                    <p>Да, безусловно. Вы можете запросить экспорт напрямую на официальном сайте TV Time по адресу <a href="https://gdpr.tvtime.com/gdpr/self-service" target="_blank" rel="noopener">gdpr.tvtime.com/gdpr/self-service</a>, а затем загрузить файл в Episora-WatchMate, следуя нашему <a href="how-to-import-tv-time-data-android.html">руководству по импорту</a>.</p>
+                    <p>Да, безусловно. Вы можете запросить экспорт напрямую на официальном сайте TV Time по адресу <a href="https://gdpr.tvtime.com/gdpr/self-service" target="_blank" rel="noopener">gdpr.tvtime.com/gdpr/self-service</a>, а затем загрузить файл в Episora-WatchMate, следуя нашему <a href="kak-importirovat-dannye-tv-time-android.html">руководству по импорту</a>.</p>
                 </div>
             </details>
 
@@ -626,5 +652,85 @@
         </p>
     </footer>
 
+<style>
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 640px);
+    background: rgba(18, 21, 32, 0.96);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    z-index: 10000;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+.cookie-content p { margin: 0 0 12px; color: #cbd5e1; }
+.cookie-content a { color: #b78cff; text-decoration: underline; font-weight: 600; }
+.cookie-content a:hover { color: #ffffff; }
+.cookie-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.cookie-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: inherit;
+}
+.cookie-btn.primary { background: #7c3aed; color: #ffffff; }
+.cookie-btn.primary:hover { background: #6d28d9; transform: translateY(-1px); }
+.cookie-btn.secondary { background: rgba(255, 255, 255, 0.08); color: #cbd5e1; }
+.cookie-btn.secondary:hover { background: rgba(255, 255, 255, 0.16); color: #ffffff; }
+@media (max-width: 480px) {
+    .cookie-banner { bottom: 10px; padding: 14px 16px; width: 94%; }
+    .cookie-actions { flex-direction: column-reverse; }
+    .cookie-btn { width: 100%; text-align: center; }
+}
+</style>
+<div id="cookieBanner" class="cookie-banner" style="display:none;" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div class="cookie-content">
+        <p>Этот сайт использует технические файлы cookie и, с вашего согласия, анонимные аналитические cookie (Google Analytics) для улучшения работы. <a href="privacy-policy-russian.html" target="_blank">Политика конфиденциальности</a>.</p>
+        <div class="cookie-actions">
+            <button id="cookieReject" class="cookie-btn secondary">Только необходимые</button>
+            <button id="cookieAccept" class="cookie-btn primary">Принять все</button>
+        </div>
+    </div>
+</div>
+<script>
+    (function() {
+        const consent = localStorage.getItem('episora_cookie_consent');
+        const banner = document.getElementById('cookieBanner');
+        if (!consent && banner) {
+            banner.style.display = 'block';
+        }
+        const btnAccept = document.getElementById('cookieAccept');
+        const btnReject = document.getElementById('cookieReject');
+        if (btnAccept) {
+            btnAccept.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'granted');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+        if (btnReject) {
+            btnReject.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'denied');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'denied' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+    })();
+</script>
 </body>
 </html>

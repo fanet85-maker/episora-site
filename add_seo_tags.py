@@ -7,6 +7,9 @@ groups = {
         ('alternativa-tv-time-italiano.html', 'it'),
         ('tv-time-alternative-android-app.html', 'en'),
         ('tv-time-alternative-android-app-es.html', 'es'),
+        ('tv-time-alternative-android-app-fr.html', 'fr'),
+        ('tv-time-alternative-android-app-ru.html', 'ru'),
+        ('tv-time-alternative-android-app-de.html', 'de'),
     ],
     'import': [
         ('come-importare-dati-tv-time-italiano.html', 'it'),
@@ -21,16 +24,33 @@ groups = {
         ('contatti-assistenza-italiano.html', 'it'),
         ('contact-support-english.html', 'en'),
         ('contacto-soporte-espanol.html', 'es'),
+        ('contact-support-french.html', 'fr'),
+        ('contact-support-russian.html', 'ru'),
+        ('contact-support-german.html', 'de'),
     ],
     'privacy': [
         ('privacy-policy-italiano.html', 'it'),
         ('privacy-policy-english.html', 'en'),
         ('politica-de-privacidad-espanol.html', 'es'),
+        ('privacy-policy-french.html', 'fr'),
+        ('privacy-policy-russian.html', 'ru'),
+        ('privacy-policy-german.html', 'de'),
     ],
     'credits': [
         ('credits-italiano.html', 'it'),
         ('credits-english.html', 'en'),
         ('creditos-espanol.html', 'es'),
+        ('credits-french.html', 'fr'),
+        ('credits-russian.html', 'ru'),
+        ('credits-german.html', 'de'),
+    ],
+    'updates': [
+        ('aggiornamenti-italiano.html', 'it'),
+        ('updates-english.html', 'en'),
+        ('actualizaciones-espanol.html', 'es'),
+        ('updates-french.html', 'fr'),
+        ('updates-russian.html', 'ru'),
+        ('updates-german.html', 'de'),
     ],
 }
 
@@ -40,10 +60,9 @@ file_to_group = {fname: entries for entries in groups.values() for fname, _ in e
 def build_tags(fname, entries):
     tags = [f'<link rel="canonical" href="{base}{fname}" />']
     for other, lang in entries:
-        if other != fname:
-            tags.append(f'<link rel="alternate" hreflang="{lang}" href="{base}{other}" />')
+        tags.append(f'<link rel="alternate" hreflang="{lang}" href="{base}{other}" />')
     if len(entries) >= 3:
-        tags.append(f'<link rel="alternate" hreflang="x-default" href="{base}" />')
+        tags.append(f'<link rel="alternate" hreflang="x-default" href="{base}tv-time-alternative-android-app.html" />')
     return '\n    '.join(tags)
 
 

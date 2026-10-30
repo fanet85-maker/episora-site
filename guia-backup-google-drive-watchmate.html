@@ -1,20 +1,25 @@
-﻿<!DOCTYPE html>
-<html lang="it">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
+        <!-- Google tag (gtag.js) with Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      const savedConsent = localStorage.getItem('episora_cookie_consent');
+      gtag('consent', 'default', {
+        'analytics_storage': savedConsent === 'granted' ? 'granted' : 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
       gtag('js', new Date());
-
-      gtag('config', 'G-S4NKE4QN1J');
+      gtag('config', 'G-S4NKE4QN1J', { 'anonymize_ip': true });
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Ottimizzazione SEO per chi vuole proteggere i propri dati di tracciamento -->
-    <title>Come Attivare il Backup Sicuro su Google Drive con Episora-WatchMate</title>
-    <meta name="description" content="Guida ufficiale passo-passo. Scopri come configurare il backup automatico e crittografato su Google Drive per non perdere mai la tua lista di serie TV e film.">
+    <title>Cómo Activar el Respaldo Seguro en Google Drive con Episora-WatchMate</title>
+    <meta name="description" content="Guía oficial paso a paso. Aprende a configurar la copia de seguridad automática y cifrada en Google Drive para no perder nunca tu lista de series y películas.">
     <link rel="canonical" href="https://www.episora-watchmate.it/guia-backup-google-drive-watchmate.html" />
     <style>
         :root {
@@ -37,7 +42,6 @@
             margin: 0 auto;
             padding: 40px 20px;
         }
-        /* Pulsante Indietro */
         .back-btn {
             display: inline-block;
             color: var(--text-muted);
@@ -49,7 +53,6 @@
         .back-btn:hover {
             color: var(--accent-color);
         }
-        /* Contenuto Articolo */
         h1 {
             font-size: 2.3rem;
             line-height: 1.3;
@@ -79,7 +82,6 @@
             font-size: 1.25rem;
             color: #fff;
         }
-        /* Box promozionale finale */
         .promo-box {
             background: linear-gradient(135deg, #1a1d2e 0%, #0b0d14 100%);
             border: 1px solid #2d3748;
@@ -127,63 +129,139 @@
 <body>
 
     <div class="container">
-        <!-- Ritorno alla landing page italiana -->
-        <a href="alternativa-tv-time-italiano.html" class="back-btn">← Torna alla Home Page</a>
+        <a href="tv-time-alternative-android-app-es.html" class="back-btn">← Volver a la página principal</a>
 
         <main class="guide-content">
-            <h1>Come configurare il backup su Google Drive</h1>
-            <div class="meta-info">Guida ufficiale al Supporto • Tempo di lettura: 2 minuti</div>
+            <h1>Cómo configurar el respaldo en Google Drive</h1>
+            <div class="meta-info">Guía oficial de soporte • Tiempo de lectura: 2 minutos</div>
 
-            <p>Per proteggere la tua cronologia delle serie TV e dei film, segui questi passaggi direttamente nel menu dell'app Episora-WatchMate.</p>
+            <p>Para mantener seguro tu historial de series de TV y películas, sigue estos pasos directamente en el menú de la aplicación Episora-WatchMate.</p>
 
-            <h2>I passaggi per creare il backup sono:</h2>
+            <h2>Los pasos para crear la copia de seguridad son:</h2>
 
             <div class="step-block">
-                <h3>1. Accedi al profilo</h3>
-                <p>Apri Episora-WatchMate e tocca l'icona del profilo in alto a destra.</p>
+                <h3>1. Abre tu perfil</h3>
+                <p>Abre Episora-WatchMate y toca el icono de perfil en la esquina superior derecha.</p>
             </div>
 
             <div class="step-block">
-                <h3>2. Clicca sull'ingranaggio</h3>
-                <p>Sempre in alto a destra, fai clic sull'icona a forma di ingranaggio per aprire le impostazioni.</p>
+                <h3>2. Toca el engranaje</h3>
+                <p>También en la esquina superior derecha, toca el icono de engranaje para abrir los ajustes.</p>
             </div>
 
             <div class="step-block">
-                <h3>3. Apri Impostazioni app</h3>
-                <p>Nel menu delle impostazioni, seleziona <strong>Impostazioni app</strong>.</p>
+                <h3>3. Abre Ajustes de la app</h3>
+                <p>En el menú de configuración, selecciona <strong>Ajustes de la app</strong>.</p>
             </div>
 
             <div class="step-block">
-                <h3>4. Scorri fino a Backup Google Drive</h3>
-                <p>Scorri verso il basso fino a trovare la sezione dedicata a <strong>Backup Google Drive</strong>.</p>
+                <h3>4. Desplázate hasta Copia de seguridad en Google Drive</h3>
+                <p>Baja hasta encontrar la sección dedicada a <strong>Copia de seguridad en Google Drive</strong>.</p>
             </div>
 
             <div class="step-block">
-                <h3>5. Accedi con il tuo account</h3>
-                <p>Accedi con il tuo account Google per collegare il tuo spazio Drive all'app.</p>
+                <h3>5. Inicia sesión con tu cuenta</h3>
+                <p>Inicia sesión con tu cuenta de Google para vincular tu almacenamiento de Google Drive con la app.</p>
             </div>
 
             <div class="step-block">
-                <h3>6. Imposta frequenza e Wifi</h3>
-                <p>In <strong>Backup automatico</strong>, scegli la frequenza di salvataggio e se usare solo il Wi-Fi.</p>
+                <h3>6. Configura frecuencia y solo Wi-Fi</h3>
+                <p>En <strong>Copia de seguridad automática</strong>, elige la frecuencia de guardado y si deseas usar solo Wi-Fi.</p>
             </div>
 
-            <h2>Perché attivare il backup Google Drive?</h2>
-            <p>Così eviti di perdere i tuoi dati in caso di cambio, smarrimento o guasto del telefono e puoi ripristinare tutto rapidamente su un nuovo dispositivo.</p>
+            <h2>¿Por qué activar la copia de seguridad en Google Drive?</h2>
+            <p>Así evitas perder tus datos en caso de cambio, pérdida o avería del móvil y puedes restaurar todo rápidamente en un nuevo dispositivo.</p>
 
-            <!-- Box di conversione finale -->
             <div class="promo-box">
-                <h3>Metti al sicuro la tua cronologia multimediale</h3>
-                <p>Scarica Episora-WatchMate, attiva il backup automatico e goditi le tue serie preferite senza pensieri.</p>
-                <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Scarica su Google Play Store">
+                <h3>Protege tu historial multimedia</h3>
+                <p>Descarga Episora-WatchMate, activa la copia de seguridad automática y disfruta de tus series favoritas sin preocupaciones.</p>
+                <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Descargar en Google Play Store">
                     <img src="google-play-logo.png" alt="Google Play Store" style="height: 24px; width: auto;">
-                    <span>Disponibile su Google Play</span>
+                    <span>Disponible en Google Play</span>
                 </a>
             </div>
         </main>
     </div>
 
+<style>
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 640px);
+    background: rgba(18, 21, 32, 0.96);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    z-index: 10000;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+.cookie-content p { margin: 0 0 12px; color: #cbd5e1; }
+.cookie-content a { color: #b78cff; text-decoration: underline; font-weight: 600; }
+.cookie-content a:hover { color: #ffffff; }
+.cookie-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.cookie-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: inherit;
+}
+.cookie-btn.primary { background: #7c3aed; color: #ffffff; }
+.cookie-btn.primary:hover { background: #6d28d9; transform: translateY(-1px); }
+.cookie-btn.secondary { background: rgba(255, 255, 255, 0.08); color: #cbd5e1; }
+.cookie-btn.secondary:hover { background: rgba(255, 255, 255, 0.16); color: #ffffff; }
+@media (max-width: 480px) {
+    .cookie-banner { bottom: 10px; padding: 14px 16px; width: 94%; }
+    .cookie-actions { flex-direction: column-reverse; }
+    .cookie-btn { width: 100%; text-align: center; }
+}
+</style>
+<div id="cookieBanner" class="cookie-banner" style="display:none;" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div class="cookie-content">
+        <p>Este sitio web utiliza cookies técnicas y, con su consentimiento, cookies analíticas anonimizadas (Google Analytics) para mejorar su experiencia. <a href="politica-de-privacidad-espanol.html" target="_blank">Política de privacidad</a>.</p>
+        <div class="cookie-actions">
+            <button id="cookieReject" class="cookie-btn secondary">Solo necesarias</button>
+            <button id="cookieAccept" class="cookie-btn primary">Aceptar todas</button>
+        </div>
+    </div>
+</div>
+<script>
+    (function() {
+        const consent = localStorage.getItem('episora_cookie_consent');
+        const banner = document.getElementById('cookieBanner');
+        if (!consent && banner) {
+            banner.style.display = 'block';
+        }
+        const btnAccept = document.getElementById('cookieAccept');
+        const btnReject = document.getElementById('cookieReject');
+        if (btnAccept) {
+            btnAccept.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'granted');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+        if (btnReject) {
+            btnReject.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'denied');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'denied' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+    })();
+</script>
 </body>
 </html>
-
-

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+        <!-- Google tag (gtag.js) with Consent Mode v2 -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      const savedConsent = localStorage.getItem('episora_cookie_consent');
+      gtag('consent', 'default', {
+        'analytics_storage': savedConsent === 'granted' ? 'granted' : 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-S4NKE4QN1J', { 'anonymize_ip': true });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4NKE4QN1J"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Time-Daten in Episora-WatchMate importieren und migrieren</title>
+    <meta name="description" content="Schritt-für-Schritt-Anleitung. Erfahre, wie du deine Tracking-Daten aus TV Time exportierst und kostenlos in Episora-WatchMate für Android importierst.">
+    <link rel="canonical" href="https://www.episora-watchmate.it/wie-man-tv-time-daten-importiert.html" />
+    <style>
+        :root {
+            --bg-color: #0f111a;
+            --card-bg: #1a1d2e;
+            --accent-color: #7c3aed;
+            --text-color: #ffffff;
+            --text-muted: #a0aec0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .back-btn {
+            display: inline-block;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .back-btn:hover {
+            color: var(--accent-color);
+        }
+        h1 {
+            font-size: 2.3rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .meta-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #2d3748;
+            padding-bottom: 20px;
+        }
+        .guide-content h2 {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            margin-top: 40px;
+        }
+        .step-block {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border-left: 4px solid var(--accent-color);
+        }
+        .step-block h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: #fff;
+        }
+        .step-block a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .step-block a:hover {
+            color: #fff;
+        }
+        .guide-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto 5px auto;
+            border-radius: 10px;
+            border: 2px solid #2d3748;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        .promo-box {
+            background: linear-gradient(135deg, #1a1d2e 0%, #0b0d14 100%);
+            border: 1px solid #2d3748;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .promo-box h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 25px auto 10px auto;
+            background: #0f111a;
+            border: 1px solid #2d3748;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+        }
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            animation: fadeEffect 0.5s ease-in-out;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        .carousel-slide img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            padding-top: 15px;
+        }
+        .carousel-caption {
+            background: rgba(26, 29, 46, 0.95);
+            color: var(--text-color);
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #2d3748;
+            line-height: 1.5;
+        }
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            background: rgba(15, 17, 26, 0.8);
+            color: var(--accent-color);
+            border: 1px solid #2d3748;
+            font-size: 20px;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            user-select: none;
+            z-index: 5;
+        }
+        .carousel-prev:hover, .carousel-next:hover {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+        }
+        .carousel-prev { left: 10px; }
+        .carousel-next { right: 10px; }
+        .carousel-dots {
+            text-align: center;
+            padding: 10px 0;
+            background: #0b0d14;
+        }
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #4a5568;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .dot.active, .dot:hover {
+            background-color: var(--accent-color);
+        }
+        @keyframes fadeEffect {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            .carousel-prev, .carousel-next {
+                padding: 6px 10px;
+                font-size: 16px;
+            }
+            .carousel-caption {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+            }
+        }
+        .info-alert-box {
+            display: flex;
+            background: rgba(124, 58, 237, 0.1);
+            border-left: 4px solid #7c3aed;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #cbd5e0;
+        }
+        .info-alert-icon {
+            font-size: 1.3rem;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .info-alert-content strong {
+            color: #7c3aed;
+        }
+        .step-sublist {
+            margin: 20px 0 25px 5px;
+            padding: 0;
+            list-style: none;
+            counter-reset: substep-counter;
+        }
+        .step-sublist li {
+            position: relative;
+            margin-bottom: 12px;
+            padding-left: 35px;
+            line-height: 1.6;
+            color: #cbd5e0;
+            font-size: 0.95rem;
+        }
+        .step-sublist li::before {
+            content: counter(substep-counter);
+            counter-increment: substep-counter;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            background: rgba(124, 58, 237, 0.15);
+            color: #7c3aed;
+            font-weight: bold;
+            font-size: 0.8rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #7c3aed;
+        }
+        .step-sublist li strong {
+            color: #fff;
+        }
+        .step-block > img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            display: block;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .carousel-slides img {
+                height: 280px;
+            }
+            .step-block > img {
+                max-height: 280px;
+            }
+        }
+        .carousel-slides img,
+        .step-block > img {
+            cursor: zoom-in;
+            transition: opacity 0.2s ease;
+        }
+        .carousel-slides img:hover,
+        .step-block > img:hover {
+            opacity: 0.9;
+        }
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 15, 26, 0.95);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: zoom-out;
+        }
+        .lightbox-modal.show .lightbox-content {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #a0aec0;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .lightbox-close:hover {
+            color: #7c3aed;
+            transform: scale(1.1);
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            text-align: center;
+            background: rgba(26, 32, 44, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            max-width: 80%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 75vh;
+            }
+            .lightbox-close {
+                top: 15px;
+                right: 20px;
+                font-size: 35px;
+            }
+            .lightbox-caption {
+                font-size: 0.85rem;
+                bottom: 20px;
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="tv-time-alternative-android-app-de.html" class="back-btn">← Zurück zur Startseite</a>
+
+        <main class="guide-content">
+            <h1>TV Time-Verlauf nach Episora-WatchMate migrieren</h1>
+            <div class="meta-info">Offizielle Support-Anleitung • Lesezeit: 2 Minuten</div>
+
+            <p>Suchst du nach einer verlässlichen Alternative zu TV Time oder einer sicheren Möglichkeit, deine Serien und Filme zu verwalten, ohne von fremden Cloud-Servern abhängig zu sein? Du musst keineswegs wieder von vorne anfangen.</p>
+            
+            <p>Dank der integrierten Migrationsfunktion in <strong>Episora-WatchMate</strong> kannst du deinen kompletten Verlauf reibungslos übertragen. Deine persönlichen Daten verbleiben lokal auf deinem Android-Gerät, sicher vor zukünftigen Dienstabschaltungen.</p>
+
+            <h2>In 4 Schritten zur erfolgreichen Datenmigration:</h2>
+
+            <p style="margin: 15px 0 20px; padding: 12px 15px; border-left: 4px solid #e74c3c; background: #fff5f5; color: #7f1d1d; border-radius: 6px;">
+                <strong>Wichtiger Hinweis:</strong> TV Time hat seine Server am 15. Juli 2026 endgültig abgeschaltet und nicht exportierte Daten gelöscht. Ein neuer Download ist nicht mehr möglich. Falls du zuvor eine Sicherung über die DSGVO-Funktion angefordert hast, kannst du diese Datei problemlos importieren.
+            </p>
+
+            <div class="step-block">
+                <h3>1. Daten aus TV Time exportieren</h3>
+                <p>Der erste Schritt ist das Beschaffen deiner Exportdatei. Du konntest sie über die offizielle TV Time-Exportseite anfordern: <a href="https://gdpr.tvtime.com/gdpr/self-service" target="_blank" rel="noopener">gdpr.tvtime.com/gdpr/self-service</a>. Melde dich mit deinem Konto an und fordere die Sicherung an (DSGVO-Datenexport). Du erhältst ein ZIP-Archiv mit deinen Daten im JSON- oder CSV-Format.</p>
+                <p style="margin-top: 10px; font-size: 0.95rem; color: var(--text-muted);">
+                    💡 <strong>Praktischer Tipp:</strong> Fordere den Export am besten direkt mit dem Smartphone an, damit die Datei sofort im Gerätespeicher landet. Falls du es am Computer durchführst, musst du die Datei anschließend auf dein Smartphone übertragen (z. B. per E-Mail, WhatsApp oder Google Drive).
+                </p>
+            </div>
+
+            <div class="step-block">
+                <h3>2. Episora-WatchMate vorbereiten</h3>
+                <p>Falls noch nicht installiert, lade die App auf dein Android-Gerät (<a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" target="_blank" rel="noopener noreferrer">Verfügbar bei Google Play</a>). Öffne die App, tippe unten rechts auf das <strong>Profil</strong>-Symbol, dann oben rechts auf das <strong>Zahnrad</strong>, wähle <strong>App-Einstellungen</strong> und tippe auf die Schaltfläche <strong>"TV Time DSGVO-Daten importieren"</strong>.</p>
+
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide active">
+                            <img src="schermata-1-profilo-en.jpg" alt="Profilbereich oben rechts">
+                            <div class="carousel-caption"><strong>Schritt 1:</strong> Gehe oben rechts in den Profilbereich.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-2-ingranaggio-en.jpg" alt="Zahnrad-Symbol oben rechts">
+                            <div class="carousel-caption"><strong>Schritt 2:</strong> Tippe oben rechts auf das Zahnrad-Symbol.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-3-impostazioni-en.jpg" alt="Bildschirm App-Einstellungen">
+                            <div class="carousel-caption"><strong>Schritt 3:</strong> Öffne den Bereich App-Einstellungen.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="schermata-4-importa-en.jpg" alt="Schaltfläche Daten importieren">
+                            <div class="carousel-caption"><strong>Schritt 4:</strong> Tippe auf die Schaltfläche zum Datenimport.</div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev">❮</button>
+                    <button class="carousel-next">❯</button>
+
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>3. Datei auswählen und importieren</h3>
+                <p>Sobald du dich im Importbereich der App befindest, läuft der Vorgang wie folgt ab:</p>
+                <ul class="step-sublist">
+                    <li><strong>Datei auswählen:</strong> Tippe auf die Startschaltfläche, um die Dateiauswahl auf deinem Gerät zu öffnen.</li>
+                    <li><strong>Datei auf dem Smartphone wählen:</strong> Wähle die von TV Time heruntergeladene ZIP- oder CSV-Datei aus.</li>
+                    <li><strong>Übersicht prüfen:</strong> Die App analysiert die Datei und zeigt eine Vorschau (Anzahl Serien, Filme und Episoden).</li>
+                    <li><strong>Import starten:</strong> Tippe auf die Schaltfläche, um die erkannten Daten zu bestätigen.</li>
+                    <li><strong>Finale Bestätigung:</strong> Bestätige den Vorgang im angezeigten Sicherheitsdialog.</li>
+                    <li><strong>Benachrichtigungen erlauben:</strong> Erlaube Benachrichtigungen, damit du sofort erfährst, wenn der Import fertiggestellt ist.</li>
+                    <li><strong>Abschluss abwarten:</strong> Der Import startet und läuft zuverlässig im Hintergrund.</li>
+                </ul>
+
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide active">
+                            <img src="import-1-seleziona-en.jpg" alt="Dateiauswahl starten">
+                            <div class="carousel-caption"><strong>Schritt 1:</strong> Tippe auf die Schaltfläche zur Dateiauswahl.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-2-scegli-file-en.jpg" alt="Datei auf dem Gerät auswählen">
+                            <div class="carousel-caption"><strong>Schritt 2:</strong> Wähle die ZIP- oder CSV-Datei auf deinem Gerät aus.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-3-riepilogo-en.jpg" alt="Zusammenfassung Vorschau">
+                            <div class="carousel-caption"><strong>Schritt 3:</strong> Prüfe die von der App angezeigte Vorschau.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-4-premi-importa-en.jpg" alt="Import-Start-Schaltfläche">
+                            <div class="carousel-caption"><strong>Schritt 4:</strong> Tippe auf die Schaltfläche zum Starten des Imports.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-5-conferma-en.jpg" alt="Bestätigungs-Popup">
+                            <div class="carousel-caption"><strong>Schritt 5:</strong> Bestätige den Datenimport im Dialog.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-6-notifiche.jpg" alt="Benachrichtigungsberechtigung">
+                            <div class="carousel-caption"><strong>Schritt 6:</strong> Erlaube Benachrichtigungen für Status-Updates.</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="import-7-esecuzione-en.jpg" alt="Import läuft">
+                            <div class="carousel-caption"><strong>Schritt 7:</strong> Der Datenimport läuft im Hintergrund.</div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-prev">❮</button>
+                    <button class="carousel-next">❯</button>
+
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <div class="info-alert-box" style="margin-top: 15px; padding: 12px 15px; border-left: 4px solid #3498db; background: #f4faff; color: #1f3c5a; border-radius: 6px;">
+                    <div class="info-alert-content">
+                        <strong>Hilfreicher Tipp:</strong> Es wird empfohlen, die App während des Imports nicht zu schließen. Sollte die Anwendung unerwartet beendet werden, kann der Vorgang jederzeit über das Menü <em>Import</em> fortgesetzt werden.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>4. Importierte Daten anhand der Zusammenfassung überprüfen</h3>
+                <p>Nach Abschluss der Verarbeitung zeigt die App eine übersichtliche Zusammenfassung an. Hier siehst du die Gesamtzahl aller importierten Serien, erkannten Filme und als gesehen markierten Episoden. Sollte ein Titel nicht exakt zugeordnet worden sein, kannst du dies manuell anpassen.</p>
+                <img src="schermata-riepilogo-importazione-watchmate-en.jpg" alt="Abschließende Zusammenfassung der importierten Daten in Episora-WatchMate" class="guide-img">
+            </div>
+
+            <h2>Hilfe oder Support benötigt?</h2>
+            <p>Stelle sicher, dass die extrahierte Datei unbeschädigt ist. Sobald der Import erfolgreich war, empfehlen wir dringend, in den Einstellungen das <strong>verschlüsselte Google Drive-Backup</strong> zu aktivieren: So bleibt deine neue Mediensammlung dauerhaft vor Verlust geschützt.</p>
+            <p>Wende dich gerne über unseren Support- und Kontaktbereich an uns, falls du Hilfe benötigst.</p>
+
+            <div class="promo-box">
+                <h3>Hol dir jetzt die volle Kontrolle über deinen Serienverlauf zurück!</h3>
+                <p>Lade Episora-WatchMate herunter, importiere deine Daten in wenigen Augenblicken und sichere deine Verlaufsdaten für immer.</p>
+                <a href="https://play.google.com/store/apps/details?id=it.skolidspeak.episorawatchmate" class="cta-btn" target="_blank" rel="noopener noreferrer" title="Verfügbar bei Google Play">
+                    <img src="google-play-logo.png" alt="Google Play Store" style="height: 24px; width: auto;">
+                    <span>Verfügbar bei Google Play</span>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <div id="imageLightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" alt="Vergrößertes Bild">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+<style>
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 640px);
+    background: rgba(18, 21, 32, 0.96);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    z-index: 10000;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #e2e8f0;
+}
+.cookie-content p { margin: 0 0 12px; color: #cbd5e1; }
+.cookie-content a { color: #b78cff; text-decoration: underline; font-weight: 600; }
+.cookie-content a:hover { color: #ffffff; }
+.cookie-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.cookie-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: inherit;
+}
+.cookie-btn.primary { background: #7c3aed; color: #ffffff; }
+.cookie-btn.primary:hover { background: #6d28d9; transform: translateY(-1px); }
+.cookie-btn.secondary { background: rgba(255, 255, 255, 0.08); color: #cbd5e1; }
+.cookie-btn.secondary:hover { background: rgba(255, 255, 255, 0.16); color: #ffffff; }
+@media (max-width: 480px) {
+    .cookie-banner { bottom: 10px; padding: 14px 16px; width: 94%; }
+    .cookie-actions { flex-direction: column-reverse; }
+    .cookie-btn { width: 100%; text-align: center; }
+}
+</style>
+<div id="cookieBanner" class="cookie-banner" style="display:none;" role="dialog" aria-live="polite" aria-label="Cookie-Einwilligung">
+    <div class="cookie-content">
+        <p>Diese Website verwendet technische Cookies und mit Ihrer Zustimmung anonymisierte Analysen (Google Analytics), um Ihre Benutzererfahrung zu verbessern. <a href="privacy-policy-german.html" target="_blank">Datenschutzerklärung</a>.</p>
+        <div class="cookie-actions">
+            <button id="cookieReject" class="cookie-btn secondary">Nur notwendige</button>
+            <button id="cookieAccept" class="cookie-btn primary">Alle akzeptieren</button>
+        </div>
+    </div>
+</div>
+<script>
+    (function() {
+        const consent = localStorage.getItem('episora_cookie_consent');
+        const banner = document.getElementById('cookieBanner');
+        if (!consent && banner) {
+            banner.style.display = 'block';
+        }
+        const btnAccept = document.getElementById('cookieAccept');
+        const btnReject = document.getElementById('cookieReject');
+        if (btnAccept) {
+            btnAccept.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'granted');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+        if (btnReject) {
+            btnReject.addEventListener('click', function() {
+                localStorage.setItem('episora_cookie_consent', 'denied');
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', { 'analytics_storage': 'denied' });
+                }
+                if (banner) banner.style.display = 'none';
+            });
+        }
+    })();
+</script>
+</body>
+<script>
+    document.querySelectorAll('.carousel-container').forEach((container) => {
+        const slides = container.querySelectorAll('.carousel-slide');
+        const dots = container.querySelectorAll('.dot');
+        const prevBtn = container.querySelector('.carousel-prev');
+        const nextBtn = container.querySelector('.carousel-next');
+
+        let slideIndex = 0;
+        let slideTimer = null;
+        let isPaused = false;
+        let touchTimeout = null;
+
+        function showSlides(index) {
+            if (index >= slides.length) { slideIndex = 0; }
+            if (index < 0) { slideIndex = slides.length - 1; }
+
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (dots[i]) dots[i].classList.remove('active');
+            });
+
+            slides[slideIndex].classList.add('active');
+            if (dots[slideIndex]) dots[slideIndex].classList.add('active');
+        }
+
+        function startTimer() {
+            clearInterval(slideTimer);
+            if (!isPaused) {
+                slideTimer = setInterval(() => {
+                    slideIndex++;
+                    showSlides(slideIndex);
+                }, 4000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(slideTimer);
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                slideIndex--;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                slideIndex++;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        }
+
+        dots.forEach((dot, dotIdx) => {
+            dot.addEventListener('click', () => {
+                slideIndex = dotIdx;
+                showSlides(slideIndex);
+                startTimer();
+            });
+        });
+
+        container.addEventListener('mouseenter', () => {
+            isPaused = true;
+            stopTimer();
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isPaused = false;
+            startTimer();
+        });
+
+        container.addEventListener('touchstart', () => {
+            isPaused = true;
+            stopTimer();
+            clearTimeout(touchTimeout);
+        }, { passive: true });
+
+        container.addEventListener('touchend', () => {
+            clearTimeout(touchTimeout);
+            touchTimeout = setTimeout(() => {
+                isPaused = false;
+                startTimer();
+            }, 6000);
+        }, { passive: true });
+
+        showSlides(slideIndex);
+        startTimer();
+    });
+
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    const imagesToZoom = document.querySelectorAll('.carousel-slides img, .step-block > img');
+
+    imagesToZoom.forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+
+            const slideParent = img.closest('.carousel-slide');
+            if (slideParent) {
+                const captionEl = slideParent.querySelector('.carousel-caption');
+                lightboxCaption.innerHTML = captionEl ? captionEl.innerHTML : img.alt;
+            } else {
+                lightboxCaption.innerHTML = img.alt;
+            }
+
+            lightbox.style.display = 'flex';
+            setTimeout(() => {
+                lightbox.classList.add('show');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('show');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+        }, 300);
+        document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightboxImg || e.target === lightboxClose) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+            closeLightbox();
+        }
+    });
+</script>
+</html>
