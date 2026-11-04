@@ -1,0 +1,94 @@
+.christmas-event-banner[hidden] { display: none; }
+
+.christmas-event-banner {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 3vw, 30px);
+    width: min(940px, calc(100% - 32px));
+    min-height: 132px;
+    margin: 22px auto 0;
+    padding: 18px 28px;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background: radial-gradient(ellipse at 50% 0, #3b2760 0, #1a1d2e 72%);
+    border: 1px solid rgba(196, 181, 253, .38);
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .28);
+    isolation: isolate;
+}
+
+.christmas-event-banner::before,
+.christmas-event-banner::after {
+    position: absolute;
+    z-index: -1;
+    color: rgba(255, 255, 255, .72);
+    content: "✦";
+    animation: christmas-twinkle 2.8s ease-in-out infinite alternate;
+}
+
+.christmas-event-banner::before { top: 16px; left: 12%; font-size: 19px; }
+.christmas-event-banner::after { right: 12%; bottom: 14px; font-size: 15px; animation-delay: 1s; }
+
+.christmas-event-banner__mascot {
+    flex: 0 0 auto;
+    width: clamp(76px, 12vw, 112px);
+    height: clamp(76px, 12vw, 112px);
+    object-fit: contain;
+    animation: christmas-float 3s ease-in-out infinite;
+}
+
+.christmas-event-banner__content { max-width: 650px; }
+
+.christmas-event-banner__title {
+    display: block;
+    font-size: clamp(1.15rem, 3vw, 1.65rem);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.christmas-event-banner__countdown {
+    display: block;
+    margin-top: 8px;
+    color: #ddd6fe;
+    font-size: clamp(.88rem, 2vw, 1rem);
+    font-variant-numeric: tabular-nums;
+}
+
+.christmas-event-banner__link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #ddd6fe;
+    font-size: .95rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.christmas-event-banner:hover .christmas-event-banner__link { color: #fff; }
+.christmas-event-banner:focus-visible { outline: 3px solid #c4b5fd; outline-offset: 4px; }
+
+@keyframes christmas-float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-7px) rotate(2deg); }
+}
+
+@keyframes christmas-twinkle {
+    from { opacity: .35; transform: scale(.8); }
+    to { opacity: 1; transform: scale(1.15); }
+}
+
+@media (max-width: 540px) {
+    .christmas-event-banner { gap: 12px; min-height: 112px; padding: 14px 16px; }
+    .christmas-event-banner__mascot { width: 72px; height: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .christmas-event-banner::before,
+    .christmas-event-banner::after,
+    .christmas-event-banner__mascot { animation: none; }
+}
