@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-        <!-- Google tag (gtag.js) with Consent Mode v2 -->
+    <!-- Google tag (gtag.js) with Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -19,12 +19,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.episora-watchmate.it/" />
-    <title>Episora-WatchMate</title>
-    <meta name="description" content="Track TV shows, movies, and watched episodes with Episora-WatchMate. Manage your watchlist, view your stats, and keep your viewing history in sync.">
+    <link rel="alternate" hreflang="it" href="https://www.episora-watchmate.it/alternativa-tv-time-italiano.html" />
+    <link rel="alternate" hreflang="en" href="https://www.episora-watchmate.it/tv-time-alternative-android-app.html" />
+    <link rel="alternate" hreflang="es" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-es.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-fr.html" />
+    <link rel="alternate" hreflang="ru" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-ru.html" />
+    <link rel="alternate" hreflang="de" href="https://www.episora-watchmate.it/tv-time-alternative-android-app-de.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.episora-watchmate.it/" />
+    <title>Alternativa a TV Time: tracker serie TV privacy e offline | Episora-WatchMate</title>
+    <meta name="description" content="Migra da TV Time a Episora-WatchMate: tracker per serie TV e film con dati locali, uso offline, backup Google Drive e importazione del tuo archivio.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Episora-WatchMate",
+          "operatingSystem": "Android, iOS",
+          "applicationCategory": "EntertainmentApplication",
+          "url": "https://www.episora-watchmate.it/alternativa-tv-time-italiano.html",
+          "description": "Tracker offline-first per serie TV e film, con archiviazione locale, backup Google Drive e importazione dei dati TV Time.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Episora-WatchMate è gratuita?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sì, le funzionalità principali di tracciamento e il backup personale sono gratuiti."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Posso recuperare la cronologia da TV Time?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sì. Puoi richiedere l'esportazione dei dati a TV Time e importarli in Episora-WatchMate."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     <script>
         // Rileva la lingua del browser dell'utente
         const userLang = (navigator.language || navigator.userLanguage).slice(0, 2);
-        
+
         // Mappatura delle lingue con i file ottimizzati per la SEO
         const supportedLanguages = {
             'it': 'alternativa-tv-time-italiano.html',
@@ -33,7 +81,7 @@
             'fr': 'tv-time-alternative-android-app-fr.html',
             'ru': 'tv-time-alternative-android-app-ru.html',
             'de': 'tv-time-alternative-android-app-de.html',
-            // Altre lingue punteranno temporaneamente alla versione inglese ottimizzata globale
+            // Altre lingue puntano alla versione inglese ottimizzata globale
             'pt': 'tv-time-alternative-android-app.html',
             'zh': 'tv-time-alternative-android-app.html',
             'ar': 'tv-time-alternative-android-app.html',
@@ -42,7 +90,7 @@
             'id': 'tv-time-alternative-android-app.html'
         };
 
-        // Reindirizzamento dinamico
+        // Reindirizzamento dinamico alla versione localizzata
         if (supportedLanguages[userLang]) {
             window.location.href = supportedLanguages[userLang];
         } else {
@@ -50,8 +98,19 @@
         }
     </script>
 </head>
-<body style="background:#0f111a; color:#fff; font-family:sans-serif; text-align:center; padding-top:20%;">
-    <p>Loading Episora-WatchMate...</p>
+<body style="background:#0f111a; color:#fff; font-family:sans-serif; text-align:center; padding: 10% 20px;">
+    <main>
+        <h1>Tracker per serie TV e film, con i tuoi dati sotto controllo</h1>
+        <p>Passa da TV Time a Episora-WatchMate: importa il tuo archivio e tieni traccia di serie TV e film anche offline.</p>
+        <p>Se il reindirizzamento automatico non funziona, scegli la lingua:</p>
+        <nav aria-label="Seleziona la lingua">
+            <a href="alternativa-tv-time-italiano.html" lang="it">Italiano</a> ·
+            <a href="tv-time-alternative-android-app.html" lang="en">English</a> ·
+            <a href="tv-time-alternative-android-app-es.html" lang="es">Español</a> ·
+            <a href="tv-time-alternative-android-app-fr.html" lang="fr">Français</a> ·
+            <a href="tv-time-alternative-android-app-ru.html" lang="ru">Русский</a> ·
+            <a href="tv-time-alternative-android-app-de.html" lang="de">Deutsch</a>
+        </nav>
+    </main>
 </body>
 </html>
-
